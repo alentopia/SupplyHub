@@ -1,0 +1,446 @@
+/* ===================================================
+   Commodity Detail Page Styles
+   Extends design-system.css
+   =================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a2e00; /* Dark background behind phone frame */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: var(--font-primary);
+}
+
+/* ---- App Wrapper & Phone Frame ---- */
+.app-wrapper {
+  position: relative;
+  width: 412px;
+  height: 917px;
+  box-shadow: 0 0 0 10px rgba(0,0,0,0.4), 0 0 20px rgba(0,0,0,0.5);
+  border-radius: 56px; /* Outer frame border radius */
+  overflow: hidden;
+}
+
+.phone-frame {
+  width: 412px;
+  height: 917px;
+  background: #f8faf5; /* Page Background */
+  border-radius: 48px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Status Bar ---- */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 8px; /* Extra top padding for rounded corners */
+  flex-shrink: 0;
+  background: transparent;
+  z-index: 20;
+  position: relative;
+}
+
+.status-bar__time {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 15px;
+  color: #1a1c1b;
+}
+
+.status-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---- Top App Bar ---- */
+.cd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 16px;
+  background: transparent;
+  z-index: 10;
+  border-bottom: 1px solid #e1e3de; /* Very faint bottom line */
+}
+
+.cd-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cd-back-btn, .cd-share-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #002b02;
+}
+
+.cd-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 600;
+  color: #002b02;
+  margin: 0;
+}
+
+/* ---- Content Area ---- */
+.cd-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 16px 96px; /* 96px bottom padding to clear the home indicator or potential navbar */
+}
+.cd-content::-webkit-scrollbar { display: none; }
+
+/* ---- Annual Price Trend Section ---- */
+.cd-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.cd-section-title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 18px;
+  color: #002b02;
+  margin: 0;
+}
+
+.cd-section-updated {
+  font-size: 10px;
+  color: #42493e;
+}
+
+.cd-chart-card {
+  background: #f8faf5;
+  border-radius: 16px;
+  padding: 16px 20px;
+  position: relative;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.05);
+  margin-bottom: 12px;
+}
+
+.cd-chart-svg {
+  width: 100%;
+  height: 128px;
+  display: block;
+  margin-top: 16px;
+}
+
+.cd-chart-x-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 10px;
+  color: #42493e;
+  padding: 0 2px;
+}
+
+.cd-current-price-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #f4f4ee;
+  border: 1.2px solid rgba(201, 201, 201, 0.87);
+  border-radius: 8.6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cd-badge-label {
+  font-size: 8px;
+  color: #42493e;
+  margin-bottom: 2px;
+}
+
+.cd-badge-value {
+  font-size: 10px;
+  font-weight: 700;
+  color: #002b02;
+}
+
+/* ---- Compact Metrics Grid ---- */
+.cd-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.cd-metric-card {
+  background: #f4f4ee;
+  border: 1px solid rgba(194, 201, 187, 0.1);
+  border-radius: 12px;
+  padding: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cd-metric-label {
+  font-size: 11px;
+  color: #42493e;
+  margin-bottom: 2px;
+}
+
+.cd-metric-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #002b02;
+}
+
+/* ---- Benchmark Comparison Section ---- */
+.cd-benchmark-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.cd-benchmark-card {
+  background: #ffffff;
+  border: 1px solid rgba(194, 201, 187, 0.4);
+  border-radius: 16px;
+  padding: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.05);
+}
+
+.cd-benchmark-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.cd-benchmark-title {
+  font-size: 13px;
+  color: #42493e;
+}
+
+.cd-benchmark-price {
+  font-size: 20px;
+  font-weight: 600;
+  color: #002b02;
+  font-family: var(--font-secondary);
+}
+
+.cd-benchmark-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cd-benchmark-change.up {
+  color: #ba1a1a; /* Red for high/expensive difference */
+}
+.cd-benchmark-change.down {
+  color: #7eaf73; /* Green for Achieved/cheaper */
+}
+
+/* ---- Market Insight ---- */
+.cd-insight {
+  background: rgba(252, 225, 126, 0.2);
+  border-left: 4px solid #c2aa4e;
+  border-radius: 0 16px 16px 0;
+  padding: 16px 16px 16px 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.cd-insight-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cd-insight-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #705d00;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.cd-insight-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #42493e;
+}
+
+/* ---- Relevant Products Section ---- */
+.cd-relevant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cd-relevant-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #416900;
+  margin: 0;
+}
+
+.cd-relevant-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: #886800;
+  text-decoration: none;
+}
+
+.cd-products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Reusing marketplace product card structure */
+.product-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  border: 0.4px solid #aeaeae;
+  box-shadow: 0px 1px 1.8px 0px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-image-wrap {
+  width: 100%;
+  height: 140px;
+  background: #eeeee9;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  background: rgba(147, 147, 147, 0.59);
+  backdrop-filter: blur(2px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.product-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1c19;
+  margin: 0;
+}
+
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.product-price {
+  font-size: 21.84px;
+  font-weight: 600;
+  color: #416900;
+}
+
+.product-unit {
+  font-size: 15.6px;
+  color: #424936;
+}
+
+.product-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #dcb000;
+  font-weight: 700;
+}
+
+.product-sold {
+  color: #424936;
+  font-weight: 700;
+}
+.product-sold-label {
+  color: #416900;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.product-store {
+  color: #424936;
+  font-weight: 500;
+}
+
+.product-separator {
+  width: 1px;
+  height: 15px;
+  background: #e1e3de;
+}
+
+.product-distance {
+  color: #416900;
+}

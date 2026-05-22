@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System – I Love Binus / Produce UI</title>
+  <meta name="description" content="Design System template guide for the Produce UI app — color palettes, typography, and components.">
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="design-system-page.css" />
+</head>
+<body>
+
+  <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+  <section class="ds-hero" aria-label="Hero">
+    <!-- Tilted phone mockup images -->
+    <div class="hero-images">
+      <div class="hero-img-card" style="--r: 14.3deg; --x: -60px; --y: 0px; --z: 1;">
+        <img src="banner_farm.png" alt="App mockup 1" />
+      </div>
+      <div class="hero-img-card" style="--r: 14.3deg; --x: 0px; --y: 10px; --z: 2;">
+        <img src="product_tomato.png" alt="App mockup 2" />
+      </div>
+      <div class="hero-img-card" style="--r: 14.3deg; --x: 60px; --y: 20px; --z: 3;">
+        <img src="avatar_sarah.png" alt="App mockup 3" />
+      </div>
+      <div class="hero-img-card" style="--r: 14.3deg; --x: 120px; --y: 30px; --z: 2;">
+        <img src="avatar_gabriel.png" alt="App mockup 4" />
+      </div>
+      <div class="hero-img-card" style="--r: 14.3deg; --x: 180px; --y: 38px; --z: 1;">
+        <img src="avatar_brian.png" alt="App mockup 5" />
+      </div>
+    </div>
+
+    <!-- Gradient overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Logo + Title -->
+    <div class="hero-content">
+      <div class="hero-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 96 96" fill="none" width="60" height="60">
+            <circle cx="48" cy="48" r="40" fill="#cbea7b"/>
+            <path d="M48 20 C48 20 30 36 30 52 C30 62 38 70 48 70 C58 70 66 62 66 52 C66 36 48 20 48 20Z" fill="#416900"/>
+            <path d="M48 35 C48 35 38 44 38 52 C38 57 42.5 61 48 61 C53.5 61 58 57 58 52 C58 44 48 35 48 35Z" fill="#cbea7b"/>
+          </svg>
+        </div>
+        <span class="logo-text">Nutritionist</span>
+      </div>
+      <h1 class="hero-title">Nutrition Website Template<br>for a Healthcare Brand</h1>
+      <div class="hero-cta">
+        <hr class="hero-line" />
+        <a href="index.html" class="hero-btn" id="btn-view-app">View App →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MAIN CONTENT – Design System
+       ========================================== -->
+  <div class="ds-container">
+
+    <!-- ==========================================
+         COLOR SYSTEM
+         ========================================== -->
+    <section class="ds-section" aria-labelledby="colors-heading">
+      <div class="ds-section-card">
+
+        <!-- ---- Neutral Colors ---- -->
+        <div class="color-group" id="neutral-colors">
+          <div class="color-group__header">
+            <h2 id="colors-heading" class="color-group__title">Neutral Colors</h2>
+            <p class="color-group__desc">This is a absolute white and black.</p>
+          </div>
+          <div class="color-palette">
+            <div class="color-row">
+              <div class="color-swatch" style="background:#000000;" data-copy="#000000">
+                <span class="color-swatch__label" style="color:white">#000000</span>
+              </div>
+              <div class="color-swatch" style="background:#1a1c1b;" data-copy="#1a1c1b">
+                <span class="color-swatch__label" style="color:rgba(255,255,255,0.86)">#1A1C1B</span>
+              </div>
+              <div class="color-swatch" style="background:#2f312e;" data-copy="#2f312e">
+                <span class="color-swatch__label" style="color:white">#2F312E</span>
+              </div>
+              <div class="color-swatch" style="background:#434844;" data-copy="#434844">
+                <span class="color-swatch__label" style="color:white">#434844</span>
+              </div>
+            </div>
+            <div class="color-row">
+              <div class="color-swatch" style="background:#8f918c;" data-copy="#8f918c">
+                <span class="color-swatch__label" style="color:black">#8F918C</span>
+              </div>
+              <div class="color-swatch" style="background:#c4c6c1;" data-copy="#c4c6c1">
+                <span class="color-swatch__label" style="color:black">#C4C6C1</span>
+              </div>
+              <div class="color-swatch" style="background:#eff1ec;" data-copy="#eff1ec">
+                <span class="color-swatch__label" style="color:black">#EFF1EC</span>
+              </div>
+              <div class="color-swatch" style="background:#f8faf5;" data-copy="#f8faf5">
+                <span class="color-swatch__label" style="color:black">#F8FAF5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Primary Colors ---- -->
+        <div class="color-group" id="primary-colors">
+          <div class="color-group__header">
+            <h2 class="color-group__title">Primary Colors</h2>
+            <p class="color-group__desc">The foundational color representing brand identity in this template</p>
+          </div>
+          <div class="color-palette">
+            <div class="color-row">
+              <div class="color-swatch" style="background:#1f3801;" data-copy="#1f3801">
+                <span class="color-swatch__label" style="color:white">#1F3801</span>
+              </div>
+              <div class="color-swatch" style="background:#304f01;" data-copy="#304f01">
+                <span class="color-swatch__label" style="color:white">#304F01</span>
+              </div>
+              <div class="color-swatch" style="background:#528400;" data-copy="#528400">
+                <span class="color-swatch__label" style="color:white">#528400</span>
+              </div>
+              <div class="color-swatch" style="background:#65a100;" data-copy="#65a100">
+                <span class="color-swatch__label" style="color:white">#65A100</span>
+              </div>
+            </div>
+            <div class="color-row">
+              <div class="color-swatch" style="background:#77be00;" data-copy="#77be00">
+                <span class="color-swatch__label" style="color:white">#77BE00</span>
+              </div>
+              <div class="color-swatch" style="background:#adf748;" data-copy="#adf748">
+                <span class="color-swatch__label" style="color:black">#ADF748</span>
+              </div>
+              <div class="color-swatch" style="background:#aaf945;" data-copy="#aaf945">
+                <span class="color-swatch__label" style="color:black">#AAF945</span>
+              </div>
+              <div class="color-swatch" style="background:#d5fd9a;" data-copy="#d5fd9a">
+                <span class="color-swatch__label" style="color:black">#D5FD9A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Secondary Colors ---- -->
+        <div class="color-group" id="secondary-colors">
+          <div class="color-group__header">
+            <h2 class="color-group__title">Secondary Colors</h2>
+            <p class="color-group__desc">Complementary golden tones for accents and highlights</p>
+          </div>
+          <div class="color-palette">
+            <div class="color-row">
+              <div class="color-swatch" style="background:#3c2f00;" data-copy="#3c2f00">
+                <span class="color-swatch__label" style="color:white">#3C2F00</span>
+              </div>
+              <div class="color-swatch" style="background:#574500;" data-copy="#574500">
+                <span class="color-swatch__label" style="color:white">#574500</span>
+              </div>
+              <div class="color-swatch" style="background:#907400;" data-copy="#907400">
+                <span class="color-swatch__label" style="color:white">#907400</span>
+              </div>
+              <div class="color-swatch" style="background:#ae8d00;" data-copy="#ae8d00">
+                <span class="color-swatch__label" style="color:white">#AE8D00</span>
+              </div>
+            </div>
+            <div class="color-row">
+              <div class="color-swatch" style="background:#ae8d00;" data-copy="#ae8d00">
+                <span class="color-swatch__label" style="color:white">#AE8D00</span>
+              </div>
+              <div class="color-swatch" style="background:#facc15;" data-copy="#facc15">
+                <span class="color-swatch__label" style="color:black">#FACC15</span>
+              </div>
+              <div class="color-swatch" style="background:#ffe083;" data-copy="#ffe083">
+                <span class="color-swatch__label" style="color:black">#FFE083</span>
+              </div>
+              <div class="color-swatch" style="background:#fff0ca;" data-copy="#fff0ca">
+                <span class="color-swatch__label" style="color:black">#FFF0CA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Tertiary Colors ---- -->
+        <div class="color-group" id="tertiary-colors">
+          <div class="color-group__header">
+            <h2 class="color-group__title">Tertiary Colors</h2>
+            <p class="color-group__desc">Warm orange tones for CTAs and emphasis</p>
+          </div>
+          <div class="color-palette">
+            <div class="color-row">
+              <div class="color-swatch" style="background:#4f2500;" data-copy="#4f2500">
+                <span class="color-swatch__label" style="color:white">#4F2500</span>
+              </div>
+              <div class="color-swatch" style="background:#713700;" data-copy="#713700">
+                <span class="color-swatch__label" style="color:white">#713700</span>
+              </div>
+              <div class="color-swatch" style="background:#944a00;" data-copy="#944a00">
+                <span class="color-swatch__label" style="color:white">#944A00</span>
+              </div>
+              <div class="color-swatch" style="background:#b95f01;" data-copy="#b95f01">
+                <span class="color-swatch__label" style="color:white">#B95F01</span>
+              </div>
+            </div>
+            <div class="color-row">
+              <div class="color-swatch" style="background:#d97722;" data-copy="#d97722">
+                <span class="color-swatch__label" style="color:white">#D97722</span>
+              </div>
+              <div class="color-swatch" style="background:#fa913b;" data-copy="#fa913b">
+                <span class="color-swatch__label" style="color:white">#FA913B</span>
+              </div>
+              <div class="color-swatch" style="background:#ffb783;" data-copy="#ffb783">
+                <span class="color-swatch__label" style="color:black">#FFB783</span>
+              </div>
+              <div class="color-swatch" style="background:#ffdcc5;" data-copy="#ffdcc5">
+                <span class="color-swatch__label" style="color:black">#FFDCC5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TYPOGRAPHY SECTION
+         ========================================== -->
+    <section class="ds-section" aria-labelledby="typography-heading">
+      <div class="ds-section-card">
+        <h2 id="typography-heading" class="ds-section-title">Typography</h2>
+
+        <!-- Font Families -->
+        <div class="type-families">
+          <div class="type-family-card">
+            <div class="type-sample" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;">Aa</div>
+            <div class="type-meta">
+              <strong>Plus Jakarta Sans</strong>
+              <span>Display / Hero text</span>
+              <span class="type-weights">700, 800</span>
+            </div>
+          </div>
+          <div class="type-family-card">
+            <div class="type-sample" style="font-family: 'Inter', sans-serif; font-weight: 600;">Aa</div>
+            <div class="type-meta">
+              <strong>Inter</strong>
+              <span>Body / UI text</span>
+              <span class="type-weights">400, 500, 600, 700</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type Scale -->
+        <div class="type-scale">
+          <div class="type-scale-item">
+            <span class="type-scale-size">28px</span>
+            <span class="type-scale-example" style="font-size:28px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:#191c1a;">Fresh from the farm</span>
+          </div>
+          <div class="type-scale-item">
+            <span class="type-scale-size">18px</span>
+            <span class="type-scale-example" style="font-size:18px; font-weight:700; color:#191c1a;">Section Heading</span>
+          </div>
+          <div class="type-scale-item">
+            <span class="type-scale-size">15px</span>
+            <span class="type-scale-example" style="font-size:15px; font-weight:600; color:#191c1a;">Product Title</span>
+          </div>
+          <div class="type-scale-item">
+            <span class="type-scale-size">14px</span>
+            <span class="type-scale-example" style="font-size:14px; font-weight:400; color:#64748b;">Body text / descriptions</span>
+          </div>
+          <div class="type-scale-item">
+            <span class="type-scale-size">12px</span>
+            <span class="type-scale-example" style="font-size:12px; font-weight:600; color:#8f918c;">Small label / meta info</span>
+          </div>
+          <div class="type-scale-item">
+            <span class="type-scale-size">10px</span>
+            <span class="type-scale-example" style="font-size:10px; font-weight:600; color:#8f918c;">CATEGORY BADGE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         COMPONENTS
+         ========================================== -->
+    <section class="ds-section" aria-labelledby="components-heading">
+      <div class="ds-section-card">
+        <h2 id="components-heading" class="ds-section-title">Components</h2>
+
+        <!-- Buttons -->
+        <div class="comp-group">
+          <h3 class="comp-group__title">Buttons</h3>
+          <div class="comp-row">
+            <button class="btn btn-primary" id="btn-primary-demo">Primary Button</button>
+            <button class="btn btn-outline" id="btn-outline-demo">Outline Button</button>
+            <button class="btn btn-ghost" id="btn-ghost-demo">Re-Order</button>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="comp-group">
+          <h3 class="comp-group__title">Badges</h3>
+          <div class="comp-row">
+            <span class="badge badge-completed">Completed</span>
+            <span class="badge badge-category">Vegetable</span>
+            <span class="badge badge-date">September 15th, 2026</span>
+          </div>
+        </div>
+
+        <!-- Avatars -->
+        <div class="comp-group">
+          <h3 class="comp-group__title">Avatars</h3>
+          <div class="comp-row" style="align-items:flex-end;">
+            <div class="avatar avatar-sm"><img src="avatar_sarah.png" alt="Sarah" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /></div>
+            <div class="avatar avatar-md"><img src="avatar_gabriel.png" alt="Gabriel" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /></div>
+            <div class="avatar avatar-lg avatar-bordered"><img src="avatar_brian.png" alt="Brian" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /></div>
+          </div>
+        </div>
+
+        <!-- Seller Spotlight Card -->
+        <div class="comp-group">
+          <h3 class="comp-group__title">Seller Spotlight</h3>
+          <div class="comp-row">
+            <div class="seller-card" style="cursor:default;">
+              <div class="seller-avatar-wrap">
+                <div class="avatar avatar-lg avatar-bordered">
+                  <img src="avatar_sarah.png" alt="Sarah Jenkins" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                </div>
+                <div class="star-badge seller-rating">
+                  <svg width="9.35" height="9.35" viewBox="0 0 24 24" fill="#cfa500"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <span>4.9</span><span>/</span><span>5.0</span>
+                </div>
+              </div>
+              <span class="seller-name">Sarah Jenkins</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA to view app -->
+        <div class="ds-cta-row">
+          <a href="index.html" class="btn btn-primary" id="btn-go-home" style="width:100%; text-align:center; justify-content:center;">
+            ← View Home Page App
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         BRAND REVIEW (Testimonials mockup)
+         ========================================== -->
+    <section class="ds-section" aria-labelledby="brand-heading">
+      <div class="ds-section-card testimonials-card">
+        <h2 id="brand-heading" class="ds-section-title">Brand Review</h2>
+        <div class="testimonials">
+          <blockquote class="testimonial">
+            <div class="testimonial__text">"Fresh ingredients delivered right on time. Best farming platform I've ever used!"</div>
+            <div class="testimonial__author">
+              <div class="avatar avatar-sm"><img src="avatar_sarah.png" alt="Sarah" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /></div>
+              <div>
+                <strong>Sarah Jenkins</strong>
+                <span>Farmer, Bandung</span>
+              </div>
+            </div>
+          </testimonial>
+
+          <blockquote class="testimonial">
+            <div class="testimonial__text">"The contract system is revolutionary. I can plan my harvest months in advance."</div>
+            <div class="testimonial__author">
+              <div class="avatar avatar-sm"><img src="avatar_gabriel.png" alt="Gabriel" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /></div>
+              <div>
+                <strong>Gabriel Valerio</strong>
+                <span>Farmer, Lembang</span>
+              </div>
+            </div>
+          </testimonial>
+
+          <blockquote class="testimonial">
+            <div class="testimonial__text">"Connecting with buyers has never been easier. The app is intuitive and beautiful."</div>
+            <div class="testimonial__author">
+              <div class="avatar avatar-sm"><img src="avatar_brian.png" alt="Brian" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" /></div>
+              <div>
+                <strong>Brian Alex</strong>
+                <span>Farmer, Sukabumi</span>
+              </div>
+            </div>
+          </testimonial>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /ds-container -->
+
+  <!-- Copy Toast -->
+  <div class="copy-toast" id="copy-toast" role="alert" aria-live="polite">
+    ✓ Copied to clipboard!
+  </div>
+
+  <script src="design-system.js"></script>
+</body>
+</html>

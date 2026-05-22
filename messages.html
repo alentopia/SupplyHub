@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Supply Hub - Messages</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#f8faf5',
+            primary: '#84cc16',
+            'primary-dark': '#65a30d',
+            text: '#1f2937',
+            'text-muted': '#6b7280',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    /* STATUS BAR */
+    .status-bar {
+      background: transparent;
+      padding: 12px 24px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 50;
+    }
+    .status-bar__time { color: #1a1c1b; font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .status-bar__icons { display: flex; align-items: center; gap: 6px; }
+
+    /* SCROLLABLE CONTENT */
+    .app-content {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .app-content::-webkit-scrollbar { display: none; }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      background: #FAFAF4;
+      border-top: 1px solid #C2C9BB;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80px;
+      padding-bottom: 8px; /* safe area */
+      flex-shrink: 0;
+      z-index: 50;
+    }
+    .bottom-nav__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .bottom-nav__icon { width: 24px; height: 24px; }
+    .bottom-nav__label { font-size: 12px; font-weight: 600; color: #424936; }
+    
+    .bottom-nav__item.active .bottom-nav__icon * { stroke: #6f5900; }
+    .bottom-nav__item.active .bottom-nav__label { color: #6f5900; }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+    
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+          <rect x="0"   y="7"  width="3" height="5" rx="1" fill="#1a1c1b"/>
+          <rect x="4.5" y="5"  width="3" height="7" rx="1" fill="#1a1c1b"/>
+          <rect x="9"   y="2"  width="3" height="10" rx="1" fill="#1a1c1b"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1" fill="rgba(26,28,27,0.38)"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+          <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="1.5" fill="#1a1c1b"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(26,28,27,0.35)"/>
+          <rect x="1.5" y="1.5" width="16" height="9" rx="2.5" fill="#1a1c1b"/>
+          <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(26,28,27,0.4)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Scrollable content -->
+    <div class="app-content">
+      
+      <!-- Header -->
+      <header class="pt-6 pb-4 px-4 sticky top-0 bg-surface z-10">
+        <div class="flex items-center mb-4">
+          <button class="mr-4 p-2 -ml-2 text-text" onclick="window.location.href='profile.html'">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+          <h1 class="text-xl font-bold text-[#3f6212]">Messages</h1>
+        </div>
+        <!-- Search Bar -->
+        <div class="relative flex items-center">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <input class="w-full pl-10 pr-10 py-2.5 bg-white border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm text-sm placeholder-gray-400" placeholder="Search messages..." type="text">
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <button class="p-1 text-gray-400 hover:text-gray-600 focus:outline-none">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Chat List -->
+      <main class="flex-1 px-4 pb-8">
+        <div class="flex flex-col space-y-3">
+          
+          <!-- Chat Item 1 (Pak Budi) -->
+          <div onclick="window.location.href='chat.html'" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <img alt="Pak Budi" class="w-14 h-14 rounded-full object-cover" src="avatar_pak_budi.png" onerror="this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuBzpPtJqFz5P59maowLyt-tUiC5YHzUwYXS1UD6oXX7VnYPqsgSQRbQw237LMDALw0bdmfoxKzCJSY7XGUrCTwzLu8090ekOhodd7G5gcCS-5ZQKg1O4vVR8xZT8l6fwZuV7m08Lf31LLLGIKy_W1V7yu4ycN0LVRZWkrLbU9Tj79pLGIIgoKLITicFH5mCMpOS6Pqav_R5m7E5OPL71SijUB6Nv6LXfUpGTfr_puuZg2ikSfruXUrB6vChz66YWvidw3QbqyGhWr-o'">
+              <span class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full ring-2 ring-white bg-green-500"></span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">Pak Budi</h2>
+                <span class="text-xs text-[#84cc16] font-semibold shrink-0 ml-2">9:41 AM</span>
+              </div>
+              <p class="text-sm text-gray-800 truncate font-semibold">I am interested in a 10kg contract...</p>
+            </div>
+            <div class="ml-2 w-5 h-5 bg-[#84cc16] text-white text-[10px] font-bold flex items-center justify-center rounded-full">
+              2
+            </div>
+          </div>
+
+          <!-- Chat Item 2 -->
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <img alt="Sarah Jenkins" class="w-14 h-14 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl_Qp3U8NkCoF7F0LVm16B67HPD5jhsYnAgMMvewBwWKAurBvaf4cwTFXJPgt3WNheU6esnyo6bxSwDA_G-niJ4kYUPd05Sur-ng62i1LuAYJcrhgEXVW4EF0jk8cjGg9JEDlkZfPB5k-1LCtU54UrrW5KbvuUiD_yYtiubDKGrnS_W4IZhgHbIRtg6NVnfXtXB862v389NUBoMeJEN0rMrmiN1ylOk3zSCd0gfozlocQ2ac1rLky60M_nw46LzEmuFah5ZHeZ4S1A">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">Sarah Jenkins</h2>
+                <span class="text-xs text-gray-500 shrink-0 ml-2">1h ago</span>
+              </div>
+              <p class="text-sm text-gray-500 truncate">Thank you, the order has arrived!</p>
+            </div>
+          </div>
+
+          <!-- Chat Item 3 -->
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <img alt="Michael Thompson" class="w-14 h-14 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE5Il33rrDsrSt54mXqNs0jZm4niSLssmLj3D28jth5GERdQRBWAE2mGZWvJ4o82VSCZjlbEsT_7ab6-ZfAF1Ht0RUw1mXILUHrk_WP7BdBJ9EDqbH5EPvI_O6bxDdT5zwis4KdHys7NiB0UTvnkvKf7R00jEDkgEVsm5jzJBak36kfVFbBSlDrKDDVCnrYuY6r8S9vfJT-dwHLJCnNQrIoGImHUXvPU3H9cnVZReYL3KpXMHZ4VGNbphJs-OtZ0eVZ4msKPxpzNp8">
+              <span class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full ring-2 ring-white bg-green-500"></span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">Michael Thompson</h2>
+                <span class="text-xs text-gray-500 shrink-0 ml-2">Yesterday</span>
+              </div>
+              <p class="text-sm text-gray-800 truncate font-medium">Is there a discount for bulk purchasing?</p>
+            </div>
+          </div>
+
+          <!-- Chat Item 4 -->
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <img alt="Lisa Robinson" class="w-14 h-14 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6iZ592uc9wgNRa9wzT58zocaDxSUAKNvZBLuTkngvcg-VKCv888qPU0chtMWOGNepvixkKUBBJd2lxHzjKRK9SbAArhEXnAvsnVHpTyLtyX_a9N9RtJ9YiYRlamf4VlNT87SSHoH9tlUZJyco-GA60n-gwlw7GYjxD4zovJxReCv9A01IBzt9xgS1mWG9Yoz-c6_q9Aj0dUuvCuZdTk8WXUxG5lTRDX5bKBpUV-vilh1cPs82JoJ_fDIVCwtKp60cK8Uw_DdsiNQa">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">Lisa Robinson</h2>
+                <span class="text-xs text-gray-500 shrink-0 ml-2">Tuesday</span>
+              </div>
+              <p class="text-sm text-gray-500 truncate">Can it be sent today to Jakarta?</p>
+            </div>
+          </div>
+
+          <!-- Chat Item 5 -->
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center border-2 border-white shadow-sm">
+                <span class="text-blue-600 font-bold text-xl">GF</span>
+              </div>
+              <span class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full ring-2 ring-white bg-green-500"></span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">GreenFarm Co.</h2>
+                <span class="text-xs text-gray-500 shrink-0 ml-2">Monday</span>
+              </div>
+              <p class="text-sm text-gray-500 truncate">We have a new stock of organic spinach.</p>
+            </div>
+          </div>
+
+          <!-- Chat Item 6 -->
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center border-2 border-white shadow-sm">
+                <span class="text-orange-600 font-bold text-xl">BS</span>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">Bu Siti</h2>
+                <span class="text-xs text-gray-500 shrink-0 ml-2">May 15</span>
+              </div>
+              <p class="text-sm text-gray-500 truncate">Thank you for the fast delivery.</p>
+            </div>
+          </div>
+
+          <!-- Chat Item 7 -->
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <img alt="David Brown" class="w-14 h-14 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO4s4A9MNLI2bumA1P4UnhEM1sh6cZAO8jaydjV39mjcH0GrB5czeAvXGwGdCDfejqAOUuUaaLdsPyFonqO_k97H2ufDPPI6KAUer72vZDyZmxCiG4tSzGhSY6NjmSgxYO9PC7fxrW-Yt4vVuq8KClRoE0JwfXZRKgWYgAe770iDzvOLYpn4QmHHXuoqGhhQSQGUmKhPzQFOeoPKZItBvYbFjZ0PpZIpWwK51aVyxnASnqyxsqfBhiE691YU0YwBddkbTSw2at14uS">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">David Brown</h2>
+                <span class="text-xs text-gray-500 shrink-0 ml-2">May 12</span>
+              </div>
+              <p class="text-sm text-gray-500 truncate">The vegetable quality is very good!</p>
+            </div>
+          </div>
+
+          <!-- Chat Item 8 -->
+          <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center cursor-pointer hover:bg-gray-50 transition">
+            <div class="relative mr-4 shrink-0">
+              <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center border-2 border-white shadow-sm">
+                <span class="text-purple-600 font-bold text-xl">FS</span>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline mb-1">
+                <h2 class="text-base font-bold text-gray-900 truncate">Fresh Supply Hub</h2>
+                <span class="text-xs text-gray-500 shrink-0 ml-2">May 10</span>
+              </div>
+              <p class="text-sm text-gray-500 truncate">Hello, welcome to Supply Hub! Feel free to explore our features.</p>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div><!-- /app-content -->
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketplace – ProduceUI</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="marketplace.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+          <rect x="0"   y="7"  width="3" height="5" rx="1" fill="white"/>
+          <rect x="4.5" y="5"  width="3" height="7" rx="1" fill="white"/>
+          <rect x="9"   y="2"  width="3" height="10" rx="1" fill="white"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1" fill="rgba(255,255,255,0.38)"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+          <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="1.5" fill="white"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(255,255,255,0.35)"/>
+          <rect x="1.5" y="1.5" width="16" height="9" rx="2.5" fill="white"/>
+          <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SCROLLABLE CONTENT -->
+    <div class="mp-content">
+      
+      <!-- Header: Location & Search -->
+      <header class="mp-header">
+        <div class="mp-loc-wrapper">
+          <svg class="mp-loc-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <div class="mp-loc-text-col">
+            <span class="mp-loc-label">Your Location</span>
+            <div class="mp-loc-value">
+              <span>Bandung, Jawa Barat</span>
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 1 5 5 9 1"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="mp-search">
+          <svg class="mp-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" placeholder="What are you looking for?" />
+          <svg class="mp-filter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+        </div>
+      </header>
+
+      <!-- Filter Chips -->
+      <div class="mp-chips">
+        <button class="mp-chip active">All</button>
+        <button class="mp-chip">Vegetables</button>
+        <button class="mp-chip">Fruit</button>
+        <button class="mp-chip">Grains</button>
+        <button class="mp-chip">Farm Tools</button>
+        <button class="mp-chip">Seeds</button>
+        <button class="mp-chip">Others</button>
+      </div>
+
+      <!-- Product Grid -->
+      <main class="mp-grid">
+        
+        <!-- Card 1 -->
+        <a href="product-detail.html" class="mp-card">
+          <div class="mp-card-img-wrap">
+            <img src="product_tomato.png" alt="Fresh Tomato" class="mp-card-img" />
+            <button class="mp-fav-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="mp-card-body">
+            <h3 class="mp-card-title">Fresh Tomato</h3>
+            <div class="mp-card-price">Rp 8.500<span>/kg</span></div>
+            <div class="mp-card-rating">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="mp-card-rating-val">4.2</span>
+              <span class="mp-card-dot">•</span>
+              <span class="mp-card-sold">367 Sold</span>
+            </div>
+            <div class="mp-card-footer">
+              <span>SayurBuah</span>
+              <div class="mp-card-divider"></div>
+              <span>1.2 km</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="product-detail.html" class="mp-card">
+          <div class="mp-card-img-wrap">
+            <img src="product_tomato.png" alt="Tomatoz" class="mp-card-img" style="filter: saturate(0.9) brightness(1.05);" />
+            <button class="mp-fav-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="mp-card-body">
+            <h3 class="mp-card-title">Tomatoz</h3>
+            <div class="mp-card-price">Rp 15.000<span>/kg</span></div>
+            <div class="mp-card-rating">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="mp-card-rating-val">1.8</span>
+              <span class="mp-card-dot">•</span>
+              <span class="mp-card-avail">150 Available</span>
+            </div>
+            <div class="mp-card-footer">
+              <span>TamanBuah</span>
+              <div class="mp-card-divider"></div>
+              <span>3.5 km</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="product-detail.html" class="mp-card">
+          <div class="mp-card-img-wrap">
+            <img src="product_tomato.png" alt="Organic Cherry Tomatoes" class="mp-card-img" />
+            <button class="mp-fav-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="mp-card-body">
+            <h3 class="mp-card-title">Organic Cherry Tomatoes</h3>
+            <div class="mp-card-price">Rp 12.000<span>/kg</span></div>
+            <div class="mp-card-rating">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="mp-card-rating-val">5.0</span>
+              <span class="mp-card-dot">•</span>
+              <span class="mp-card-sold">100 Sold</span>
+            </div>
+            <div class="mp-card-footer">
+              <span>PetaniLokal</span>
+              <div class="mp-card-divider"></div>
+              <span>2.0 km</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="product-detail.html" class="mp-card">
+          <div class="mp-card-img-wrap">
+            <img src="product_tomato.png" alt="Heirloom Tomato" class="mp-card-img" style="filter: contrast(1.1);" />
+            <button class="mp-fav-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="mp-card-body">
+            <h3 class="mp-card-title">Heirloom Tomato</h3>
+            <div class="mp-card-price">Rp 10.000<span>/kg</span></div>
+            <div class="mp-card-rating">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="mp-card-rating-val">3.5</span>
+              <span class="mp-card-dot">•</span>
+              <span class="mp-card-avail">20 Available</span>
+            </div>
+            <div class="mp-card-footer">
+              <span>KebunMerah</span>
+              <div class="mp-card-divider"></div>
+              <span>5.5 km</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="product-detail.html" class="mp-card">
+          <div class="mp-card-img-wrap">
+            <img src="product_tomato.png" alt="Roma Tomato" class="mp-card-img" />
+            <button class="mp-fav-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="mp-card-body">
+            <h3 class="mp-card-title">Roma Tomato</h3>
+            <div class="mp-card-price">Rp 15.000<span>/kg</span></div>
+            <div class="mp-card-rating">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="mp-card-rating-val">3.8</span>
+              <span class="mp-card-dot">•</span>
+              <span class="mp-card-sold">150 Sold</span>
+            </div>
+            <div class="mp-card-footer">
+              <span>TaniSehat</span>
+              <div class="mp-card-divider"></div>
+              <span>3.0 km</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="product-detail.html" class="mp-card">
+          <div class="mp-card-img-wrap">
+            <img src="product_tomato.png" alt="Beefsteak Tomato" class="mp-card-img" style="filter: brightness(1.1);" />
+            <button class="mp-fav-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="mp-card-body">
+            <h3 class="mp-card-title">Beefsteak Tomato</h3>
+            <div class="mp-card-price">Rp 6.000<span>/kg</span></div>
+            <div class="mp-card-rating">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span class="mp-card-rating-val">5.0</span>
+              <span class="mp-card-dot">•</span>
+              <span class="mp-card-sold">500 Sold</span>
+            </div>
+            <div class="mp-card-footer">
+              <span>KebunHijau</span>
+              <div class="mp-card-divider"></div>
+              <span>4.1 km</span>
+            </div>
+          </div>
+        </a>
+
+      </main>
+      
+      <!-- padding for bottom nav -->
+      <div style="height: 100px;"></div>
+
+    </div><!-- /mp-content -->
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi utama">
+      <!-- Home -->
+      <a href="index.html" class="bottom-nav__item" id="nav-home" aria-label="Home">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#424936"/>
+          <polyline points="9 22 9 12 15 12 15 22" stroke="#424936"/>
+        </svg>
+        <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Home</span>
+      </a>
+
+      <!-- Market (active) -->
+      <a href="marketplace.html" class="bottom-nav__item active" id="nav-market" aria-label="Market" aria-current="page">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l1-5h16l1 5" stroke="#6f5900"/>
+          <path d="M3 9a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z" stroke="#6f5900"/>
+          <rect x="9" y="14" width="6" height="5" rx="1" stroke="#6f5900"/>
+        </svg>
+        <span class="bottom-nav__label" style="color:#6f5900; font-family:var(--font-display); font-weight:700;">Market</span>
+      </a>
+
+      <!-- Forum -->
+      <button class="bottom-nav__item" id="nav-forum" aria-label="Forum">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="#424936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Forum</span>
+      </button>
+
+      <!-- Profile -->
+      <button class="bottom-nav__item" id="nav-profile" aria-label="Profile">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="#424936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Profile</span>
+      </button>
+    </nav>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+<script>
+  // Simple interactions
+  const chips = document.querySelectorAll('.mp-chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+
+  const favBtns = document.querySelectorAll('.mp-fav-btn');
+  favBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      btn.classList.toggle('active');
+    });
+  });
+</script>
+</body>
+</html>

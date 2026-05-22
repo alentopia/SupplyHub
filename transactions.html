@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Recent Transaction - Supply Hub</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#e1e3de",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-high": "#e7e9e4",
+                    "on-tertiary-container": "#743900",
+                    "surface-tint": "#416900",
+                    "tertiary-container": "#ffa35d",
+                    "on-primary-container": "#315200",
+                    "secondary": "#735c00",
+                    "primary": "#416900",
+                    "on-secondary-fixed": "#231b00",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error-container": "#93000a",
+                    "background": "#f8faf5",
+                    "tertiary": "#944a00",
+                    "primary-fixed-dim": "#91db2a",
+                    "secondary-fixed": "#ffe083",
+                    "surface-dim": "#d8dbd6",
+                    "outline-variant": "#c1cab0",
+                    "on-surface": "#191c1a",
+                    "on-secondary-container": "#6f5900",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "primary-container": "#84cc16",
+                    "on-surface-variant": "#424936",
+                    "secondary-container": "#fed01b",
+                    "surface-container-highest": "#e1e3de",
+                    "primary-fixed": "#acf847",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#ecefea",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#eec200",
+                    "on-primary-fixed": "#102000",
+                    "inverse-on-surface": "#eff1ec",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8faf5",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4ef",
+                    "surface": "#f8faf5",
+                    "outline": "#727a64",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e312e",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#304f00",
+                    "on-background": "#191c1a",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#91db2a",
+                    "on-tertiary-fixed-variant": "#713700",
+                    
+                    // Specific colors for badges matching the design
+                    "badge-yellow-bg": "#FCE38A",
+                    "badge-yellow-text": "#825e00",
+                    "badge-green-bg": "#C5E1A5",
+                    "badge-green-text": "#33691E",
+                    "card-border": "#d1d5db"
+                },
+                "fontFamily": {
+                    "sans": ["Plus Jakarta Sans", "sans-serif"]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    /* STATUS BAR */
+    .status-bar {
+      background: transparent;
+      padding: 12px 24px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 50;
+    }
+    .status-bar__time { color: #1a1c1b; font-size: 14px; font-weight: 700; }
+    .status-bar__icons { display: flex; align-items: center; gap: 6px; }
+
+    /* SCROLLABLE CONTENT */
+    .app-content {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: none;
+      display: flex;
+      flex-direction: column;
+      background: #f8faf5;
+    }
+    .app-content::-webkit-scrollbar { display: none; }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+    
+    /* Transaction Card Styles */
+    .transaction-card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #d1d5db; /* gray-300 */
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    
+    .vertical-divider {
+      width: 1px;
+      background-color: #f3f4f6; /* gray-100 */
+      margin: 0 16px;
+    }
+    
+    .action-btn-green {
+      border: 1px solid #416900;
+      color: #416900;
+      background: white;
+    }
+    .action-btn-orange {
+      border: 1px solid #b45309; /* amber-700 */
+      color: #b45309;
+      background: white;
+    }
+    
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+    
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+          <rect x="0"   y="7"  width="3" height="5" rx="1" fill="#1a1c1b"/>
+          <rect x="4.5" y="5"  width="3" height="7" rx="1" fill="#1a1c1b"/>
+          <rect x="9"   y="2"  width="3" height="10" rx="1" fill="#1a1c1b"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1" fill="rgba(26,28,27,0.38)"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+          <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="1.5" fill="#1a1c1b"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(26,28,27,0.35)"/>
+          <rect x="1.5" y="1.5" width="16" height="9" rx="2.5" fill="#1a1c1b"/>
+          <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(26,28,27,0.4)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Scrollable content -->
+    <div class="app-content pb-8">
+      
+      <!-- Header Area -->
+      <header class="pt-6 pb-4 px-5 sticky top-0 bg-background z-20">
+        <!-- Title & Back Button -->
+        <div class="flex items-center mb-6">
+          <button class="mr-3 p-1 -ml-1 text-primary rounded-full hover:bg-surface-variant transition" onclick="window.location.href='profile.html'">
+            <span class="material-symbols-outlined font-bold text-[22px]">arrow_back</span>
+          </button>
+          <h1 class="text-[18px] font-bold text-primary">Recent Transaction</h1>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="relative flex items-center mb-5">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <span class="material-symbols-outlined text-gray-400 text-[20px]">search</span>
+          </div>
+          <input type="text" class="w-full pl-11 pr-11 py-2.5 bg-white border border-gray-300 rounded-full text-[13px] text-on-background placeholder-gray-400 focus:outline-none focus:border-primary shadow-sm" placeholder="What are you looking for?">
+          <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer">
+            <span class="material-symbols-outlined text-gray-400 text-[20px]">tune</span>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center overflow-x-auto hide-scrollbar gap-3 pb-2">
+          <button class="flex-1 py-1.5 rounded-full bg-white text-primary text-[13px] font-semibold whitespace-nowrap border border-primary shadow-sm hover:bg-gray-50">
+            Completed
+          </button>
+          <button class="flex-1 py-1.5 rounded-full bg-white text-primary text-[13px] font-semibold whitespace-nowrap border border-primary shadow-sm hover:bg-gray-50">
+            Pending
+          </button>
+          <button class="flex-1 py-1.5 rounded-full bg-white text-primary text-[13px] font-semibold whitespace-nowrap border border-primary shadow-sm hover:bg-gray-50">
+            Cancelled
+          </button>
+        </div>
+      </header>
+
+      <!-- Transaction List -->
+      <main class="w-full flex flex-col px-5 pt-2">
+        
+        <!-- Card 1: Dewi Santika -->
+        <div class="transaction-card">
+          <!-- Card Header -->
+          <div class="flex justify-between items-start mb-5">
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name=Dewi+Santika&background=8b5cf6&color=fff" alt="Dewi Santika" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h3 class="font-bold text-[14px] text-[#1e293b]">Dewi Santika</h3>
+                <div class="flex items-center text-gray-500 text-[11px] mt-0.5">
+                  <span class="material-symbols-outlined text-[13px] mr-0.5">location_on</span>
+                  Surabaya
+                </div>
+              </div>
+            </div>
+            <div class="px-3 py-1 bg-[#fef08a] text-[#854d0e] rounded-md text-[11px] font-semibold shadow-sm">
+              In Process
+            </div>
+          </div>
+          
+          <!-- Card Body -->
+          <div class="flex mb-5">
+            <div class="flex-1">
+              <h4 class="font-bold text-[15px] text-[#1e293b] mb-1">Tuna Fillet</h4>
+              <h5 class="font-bold text-[13px] text-primary">3 Ton</h5>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="w-28 flex flex-col items-end justify-center">
+              <span class="text-[10px] text-gray-800 font-bold mb-1">Total Value</span>
+              <span class="font-bold text-[14px] text-primary">Rp 45.000.000</span>
+            </div>
+          </div>
+          
+          <!-- Card Footer -->
+          <div class="flex justify-between items-center">
+            <div class="bg-gray-300 text-gray-600 px-2.5 py-1 rounded text-[10px] font-medium">
+              September 20th, 2026
+            </div>
+            <div class="flex gap-2">
+              <button class="px-5 py-1 rounded-md action-btn-green text-[12px] font-semibold shadow-sm">
+                Chat
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Lina Fitri -->
+        <div class="transaction-card">
+          <!-- Card Header -->
+          <div class="flex justify-between items-start mb-5">
+            <div class="flex items-center gap-3">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLyH-T5yZ9p6M7L1k1P2oR1R_nE0u8gN5G3gDk9qV6Q9E5hX9nL6M5Z5nF0jDk2wH5lM0X8lT2C7n_V4pX0rY9K8K6G4H5lO2tC5kQ9G5hX9nL6M5Z5nF0jDk2wH5" alt="Lina Fitri" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h3 class="font-bold text-[14px] text-[#1e293b]">Lina Fitri</h3>
+                <div class="flex items-center text-gray-500 text-[11px] mt-0.5">
+                  <span class="material-symbols-outlined text-[13px] mr-0.5">location_on</span>
+                  Yogyakarta
+                </div>
+              </div>
+            </div>
+            <div class="px-3 py-1 bg-[#bbf7d0] text-[#166534] rounded-md text-[11px] font-semibold shadow-sm">
+              Completed
+            </div>
+          </div>
+          
+          <!-- Card Body -->
+          <div class="flex mb-5">
+            <div class="flex-1">
+              <h4 class="font-bold text-[15px] text-[#1e293b] mb-1">Sardine</h4>
+              <h5 class="font-bold text-[13px] text-primary">4 Ton</h5>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="w-28 flex flex-col items-end justify-center">
+              <span class="text-[10px] text-gray-800 font-bold mb-1">Total Value</span>
+              <span class="font-bold text-[14px] text-primary">Rp 60.000.000</span>
+            </div>
+          </div>
+          
+          <!-- Card Footer -->
+          <div class="flex justify-between items-center">
+            <div class="bg-gray-300 text-gray-600 px-2.5 py-1 rounded text-[10px] font-medium">
+              September 20th, 2026
+            </div>
+            <div class="flex gap-2">
+              <button class="px-4 py-1 rounded-md action-btn-orange text-[12px] font-semibold shadow-sm">
+                Rate
+              </button>
+              <button class="px-4 py-1 rounded-md action-btn-orange text-[12px] font-semibold shadow-sm">
+                Re-Order
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Dewi Santika -->
+        <div class="transaction-card">
+          <!-- Card Header -->
+          <div class="flex justify-between items-start mb-5">
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name=Dewi+Santika&background=8b5cf6&color=fff" alt="Dewi Santika" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h3 class="font-bold text-[14px] text-[#1e293b]">Dewi Santika</h3>
+                <div class="flex items-center text-gray-500 text-[11px] mt-0.5">
+                  <span class="material-symbols-outlined text-[13px] mr-0.5">location_on</span>
+                  Surabaya
+                </div>
+              </div>
+            </div>
+            <div class="px-3 py-1 bg-[#fef08a] text-[#854d0e] rounded-md text-[11px] font-semibold shadow-sm">
+              In Process
+            </div>
+          </div>
+          
+          <!-- Card Body -->
+          <div class="flex mb-5">
+            <div class="flex-1">
+              <h4 class="font-bold text-[15px] text-[#1e293b] mb-1">Tuna Fillet</h4>
+              <h5 class="font-bold text-[13px] text-primary">3 Ton</h5>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="w-28 flex flex-col items-end justify-center">
+              <span class="text-[10px] text-gray-800 font-bold mb-1">Total Value</span>
+              <span class="font-bold text-[14px] text-primary">Rp 45.000.000</span>
+            </div>
+          </div>
+          
+          <!-- Card Footer -->
+          <div class="flex justify-between items-center">
+            <div class="bg-gray-300 text-gray-600 px-2.5 py-1 rounded text-[10px] font-medium">
+              September 20th, 2026
+            </div>
+            <div class="flex gap-2">
+              <button class="px-5 py-1 rounded-md action-btn-green text-[12px] font-semibold shadow-sm">
+                Chat
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Card 4: Budi Santoso -->
+        <div class="transaction-card">
+          <!-- Card Header -->
+          <div class="flex justify-between items-start mb-5">
+            <div class="flex items-center gap-3">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8PXIDM4h0HUD5XXzgKVxWOk1qcKjAEiic7Vaq7yUz80ptxxrS2rshDUKZo_iuZI_Sf6i8qr_9RWDkQKMlyjEnAQgAkVKjbIbHdOtJxKQB_0LyYOoR3FvejL_RZeVShC9GJGvJZUCE6HmfN7CPNNS0wxaYR6U7wNZVukPAW5xHnCfmCmABpJXnBN4nDeobnSl6zzIL3UY1bac_n0TneXNPrIlGUFk1UXHBDh4OOflHjr4pFlRGEcS1mW5UxJK7Eib-y4AljweFgcpO" alt="Budi Santoso" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h3 class="font-bold text-[14px] text-[#1e293b]">Budi Santoso</h3>
+                <div class="flex items-center text-gray-500 text-[11px] mt-0.5">
+                  <span class="material-symbols-outlined text-[13px] mr-0.5">location_on</span>
+                  Surabaya
+                </div>
+              </div>
+            </div>
+            <button class="px-5 py-1 rounded-md action-btn-green text-[11px] font-semibold shadow-sm">
+              Chat
+            </button>
+          </div>
+          
+          <!-- Card Body -->
+          <div class="flex mb-5">
+            <div class="flex-1">
+              <h4 class="font-bold text-[15px] text-[#1e293b] mb-1">Potato</h4>
+              <h5 class="font-bold text-[13px] text-primary">3 Ton</h5>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="w-28 flex flex-col items-end justify-center">
+              <span class="text-[10px] text-gray-800 font-bold mb-1">Total Value</span>
+              <span class="font-bold text-[14px] text-primary">Rp 20.000.000</span>
+            </div>
+          </div>
+          
+          <!-- Card Footer -->
+          <div class="flex justify-between items-center">
+            <div class="bg-gray-300 text-gray-600 px-2.5 py-1 rounded text-[10px] font-medium">
+              October 5th, 2026
+            </div>
+            <div class="px-3 py-1 bg-[#fed7aa] text-[#9a3412] rounded-md text-[11px] font-semibold shadow-sm">
+              Pending
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+    </div><!-- /app-content -->
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

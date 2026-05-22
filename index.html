@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProduceUI – Fresh from the Farm to Your Door</title>
+  <meta name="description" content="Buy fresh vegetables and fruits directly from trusted farmers in Bandung. Fresh from the farm to your door!">
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Inline styles for new sections to avoid breaking existing styles */
+    /* ---- Market Insight ---- */
+    .market-insight {
+      background: #154212;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
+    }
+    .market-insight::before {
+      content: '';
+      position: absolute;
+      top: -32px; right: -32px;
+      width: 128px; height: 128px;
+      background: radial-gradient(circle, rgba(194,201,187,0.3) 0%, rgba(194,201,187,0) 70%);
+      opacity: 0.2;
+    }
+    .market-insight__header {
+      display: flex; flex-direction: column; gap: 4px; z-index: 1;
+    }
+    .market-insight__title {
+      color: white; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 24px; margin: 0;
+    }
+    .market-insight__subtitle {
+      color: #7eaf73; font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.5; margin: 0;
+    }
+    .market-insight__stat {
+      display: flex; align-items: baseline; gap: 8px; z-index: 1; margin-top: 8px;
+    }
+    .market-insight__stat-value {
+      color: white; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 48px; letter-spacing: -0.96px; line-height: 1.1; margin: 0;
+    }
+    .market-insight__stat-label {
+      color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-size: 16px;
+    }
+    .market-insight__footer {
+      color: #fbfbfb; font-family: 'Inter', sans-serif; font-size: 14px; z-index: 1; margin-top: 8px;
+    }
+
+    /* ---- Current Prices ---- */
+    .price-list {
+      display: flex; flex-direction: column; gap: 12px; width: 100%;
+    }
+    .price-card {
+      background: white; border: 0.7px solid rgba(165,165,165,0.49); border-radius: 16px;
+      padding: 16px; display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+    .price-card__left {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .price-card__img-wrap {
+      width: 64px; height: 64px; border-radius: 16px; overflow: hidden; background: #eeeee9; flex-shrink: 0;
+    }
+    .price-card__img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .price-card__name {
+      color: #1a1c19; font-family: var(--font-primary); font-weight: 600; font-size: 16px; margin: 0;
+    }
+    .price-card__right {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+    }
+    .price-card__price {
+      color: #002b02; font-family: var(--font-primary); font-size: 16px; margin: 0;
+    }
+    .price-card__trend {
+      display: flex; align-items: center; gap: 4px; font-family: var(--font-primary); font-weight: 700; font-size: 16px;
+    }
+    .price-card__trend.down { color: #7eaf73; }
+    .price-card__trend.up { color: #ba1a1a; }
+  </style>
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="phone-frame">
+
+      <!-- STATUS BAR -->
+      <div class="status-bar" style="background: #416900;">
+        <span class="status-bar__time">9:41</span>
+        <div class="status-bar__icons">
+          <!-- Signal bars -->
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+            <rect x="0"   y="7"  width="3" height="5" rx="1" fill="white"/>
+            <rect x="4.5" y="5"  width="3" height="7" rx="1" fill="white"/>
+            <rect x="9"   y="2"  width="3" height="10" rx="1" fill="white"/>
+            <rect x="13.5" y="0" width="3" height="12" rx="1" fill="rgba(255,255,255,0.38)"/>
+          </svg>
+          <!-- WiFi -->
+          <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+            <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="1.5" fill="white"/>
+          </svg>
+          <!-- Battery -->
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+            <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(255,255,255,0.35)"/>
+            <rect x="1.5" y="1.5" width="16" height="9" rx="2.5" fill="white"/>
+            <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(255,255,255,0.4)"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SCROLLABLE CONTENT -->
+      <div class="app-content" style="background: #416900;">
+
+        <!-- HEADER (green bg) -->
+        <header class="app-header" style="background: #416900;">
+          <!-- Location + icons row -->
+          <div class="header-top">
+            <div class="location-group" style="padding: 4px 8px; margin-left: -8px;">
+              <!-- Pin Icon -->
+              <div class="header-logo-icon" style="width: 20px;">
+                <svg width="16" height="20" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3" fill="#416900"></circle>
+                </svg>
+              </div>
+              <div class="location-text">
+                <span class="location-label">Your Location</span>
+                <div class="location-name">
+                  <span>Bandung, Jawa Barat</span>
+                  <svg viewBox="0 0 8 5" width="8" fill="none" style="margin-left: 4px;"><path d="M1 1l3 3 3-3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="header-actions">
+              <!-- Bell Icon -->
+              <button class="action-btn" aria-label="Notifikasi">
+                <svg width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notif-dot" style="background: #ba1a1a;"></span>
+              </button>
+              <!-- Message/Flag Icon -->
+              <button class="action-btn" aria-label="Messages">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6" stroke="#416900"></polyline>
+                </svg>
+                <span class="cart-dot" style="background: #ba1a1a;"></span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- MAIN WHITE PANEL -->
+        <main class="main-panel">
+
+          <!-- ① SUPPLIER IN BANDUNG -->
+          <section class="section" style="flex-shrink: 0;" aria-labelledby="supplier-heading">
+            <header class="section-header">
+              <h3 class="section-header__title" id="supplier-heading" style="color:#315200; font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700;">Supplier in "Bandung"</h3>
+              <a class="section-header__see-more" href="suppliers.html" id="see-more-sellers" style="color: #886800; font-size: 12px; font-weight: 700;">See More →</a>
+            </header>
+            <div class="sellers-list" role="list" aria-label="Daftar supplier">
+              <div class="seller-card" role="listitem" tabindex="0">
+                <div class="seller-avatar-wrap">
+                  <div class="avatar avatar-lg avatar-bordered" style="border-color: #315200;"><img src="avatar_sarah.png" alt="Sarah Jenkins" /></div>
+                  <div class="star-badge seller-rating" style="background: white; border: none; box-shadow: 0 0 2px rgba(0,0,0,0.25); border-radius: 16px; padding: 2px 8px; display: flex; align-items: center; gap: 4px;">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="#cfa500"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span style="font-size: 9.3px; font-weight: 700; color: #cfa500;">4.9 / 5.0</span>
+                  </div>
+                </div>
+                <span class="seller-name">Sarah Jenkins</span>
+              </div>
+              <div class="seller-card" role="listitem" tabindex="0">
+                <div class="seller-avatar-wrap">
+                  <div class="avatar avatar-lg avatar-bordered" style="border-color: #315200;"><img src="avatar_gabriel.png" alt="Gabriel Valerio" /></div>
+                  <div class="star-badge seller-rating" style="background: white; border: none; box-shadow: 0 0 2px rgba(0,0,0,0.25); border-radius: 16px; padding: 2px 8px; display: flex; align-items: center; gap: 4px;">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="#cfa500"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span style="font-size: 9.3px; font-weight: 700; color: #cfa500;">4.2 / 5.0</span>
+                  </div>
+                </div>
+                <span class="seller-name">Gabriel Valerio</span>
+              </div>
+              <div class="seller-card" role="listitem" tabindex="0">
+                <div class="seller-avatar-wrap">
+                  <div class="avatar avatar-lg avatar-bordered" style="border-color: #315200;"><img src="avatar_brian.png" alt="Brian Alex" /></div>
+                  <div class="star-badge seller-rating" style="background: white; border: none; box-shadow: 0 0 2px rgba(0,0,0,0.25); border-radius: 16px; padding: 2px 8px; display: flex; align-items: center; gap: 4px;">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="#cfa500"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span style="font-size: 9.3px; font-weight: 700; color: #cfa500;">3.8 / 5.0</span>
+                  </div>
+                </div>
+                <span class="seller-name">Brian Alex</span>
+              </div>
+              <div class="seller-card" role="listitem" tabindex="0">
+                <div class="seller-avatar-wrap">
+                  <div class="avatar avatar-lg avatar-bordered" style="border-color: #315200;"><img src="avatar_valen.png" alt="Valen Angel" /></div>
+                  <div class="star-badge seller-rating" style="background: white; border: none; box-shadow: 0 0 2px rgba(0,0,0,0.25); border-radius: 16px; padding: 2px 8px; display: flex; align-items: center; gap: 4px;">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="#cfa500"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span style="font-size: 9.3px; font-weight: 700; color: #cfa500;">4.6 / 5.0</span>
+                  </div>
+                </div>
+                <span class="seller-name">Valen Angel</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ② MARKET INSIGHT -->
+          <section class="market-insight">
+            <div class="market-insight__header">
+              <h2 class="market-insight__title">Market Insight</h2>
+              <p class="market-insight__subtitle">Prices are stabilizing across Bandung markets today.</p>
+            </div>
+            <div class="market-insight__stat">
+              <h3 class="market-insight__stat-value">-2.4%</h3>
+              <span class="market-insight__stat-label">Average Monthly change</span>
+            </div>
+            <p class="market-insight__footer">Last updated: 10:24 AM</p>
+          </section>
+
+          <!-- ③ CURRENT PRICES -->
+          <section class="section" style="flex-shrink: 0;">
+            <header class="section-header">
+              <h3 class="section-header__title" style="color:#416900; font-family: 'Aileron', sans-serif; font-size: 18px; font-weight: 700;">Current Prices</h3>
+              <a class="section-header__see-more" href="commodities-price.html" style="color: #886800; font-size: 12px; font-weight: 700;">See More →</a>
+            </header>
+            <div class="price-list">
+              <!-- Item 1 -->
+              <div class="price-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+                <div class="price-card__left">
+                  <div class="price-card__img-wrap">
+                    <img src="premium_rice.png" alt="Premium Rice" />
+                  </div>
+                  <h4 class="price-card__name">Premium Rice</h4>
+                </div>
+                <div class="price-card__right">
+                  <p class="price-card__price">Rp 14.500 / Kg</p>
+                  <div class="price-card__trend down">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17L13.5 8.5 8.5 13.5 2 7"></path><polyline points="16 17 22 17 22 11"></polyline></svg>
+                    <span>Rp 200</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Item 2 -->
+              <div class="price-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+                <div class="price-card__left">
+                  <div class="price-card__img-wrap">
+                    <img src="birds_eye_chili.png" alt="Bird's Eye Chili" />
+                  </div>
+                  <h4 class="price-card__name">Bird's Eye Chili</h4>
+                </div>
+                <div class="price-card__right">
+                  <p class="price-card__price">Rp 65.200 / Kg</p>
+                  <div class="price-card__trend up">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7L13.5 15.5 8.5 10.5 2 17"></path><polyline points="16 7 22 7 22 13"></polyline></svg>
+                    <span>Rp 1.500</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Item 3 -->
+              <div class="price-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+                <div class="price-card__left">
+                  <div class="price-card__img-wrap">
+                    <img src="garlic.png" alt="Garlic" />
+                  </div>
+                  <h4 class="price-card__name">Garlic</h4>
+                </div>
+                <div class="price-card__right">
+                  <p class="price-card__price">Rp 34.800 / Kg</p>
+                  <div class="price-card__trend down">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17L13.5 8.5 8.5 13.5 2 7"></path><polyline points="16 17 22 17 22 11"></polyline></svg>
+                    <span>Rp 450</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ④ PRODUCTS MATCHING "TOMATO" -->
+          <section class="section" style="flex-shrink: 0;" aria-labelledby="products-heading">
+            <header class="section-header">
+              <h3 class="section-header__title" id="products-heading" style="color:#315200; font-family: 'Aileron', sans-serif; font-size: 18px; font-weight: 700;">Products Matching "Tomato"</h3>
+              <a class="section-header__see-more" href="search-tomato.html" id="see-more-products" style="color: #886800; font-size: 12px; font-weight: 700;">See More →</a>
+            </header>
+            <div class="products-grid">
+                <!-- Card 1: Tomat Cherry Organik -->
+                <a href="product-detail.html" style="display: flex; flex-direction: column; background: white; border: 1px solid #e0e0e0; border-radius: 16px; overflow: hidden; text-decoration: none;">
+                  <div style="position: relative; width: 100%; padding-top: 100%;">
+                    <img src="product_tomato.png" alt="Tomat Cherry Organik" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                    <div style="position: absolute; top: 12px; left: 12px; background: #84cc16; color: #191c1a; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 12px; letter-spacing: 0.5px;">TOMATO</div>
+                    <div style="position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; background: rgba(0,0,0,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                  </div>
+                  <div style="padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                    <h3 style="font-family: var(--font-primary); font-size: 14px; font-weight: 700; color: #191c1a; margin: 0; line-height: 1.2;">Tomat Cherry Organik</h3>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-family: var(--font-primary); font-weight: 600;">
+                      <span style="color: var(--color-brand-dark);">Sarah Jenkins</span>
+                      <span style="color: var(--color-brand-dark);">•</span>
+                      <span style="color: #dcb000; display: flex; align-items: center; gap: 2px;">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        4.8
+                      </span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 4px; font-size: 11px; font-family: var(--font-primary); font-weight: 600; color: var(--color-brand-dark); margin-top: 4px;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg> Garut, Jawa Barat
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Card 2: Fresh Tomato -->
+                <a href="product-detail.html" style="display: flex; flex-direction: column; background: white; border: 1px solid #e0e0e0; border-radius: 16px; overflow: hidden; text-decoration: none;">
+                  <div style="position: relative; width: 100%; padding-top: 100%;">
+                    <img src="product_tomato.png" alt="Fresh Tomato" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) saturate(1.1);" />
+                    <div style="position: absolute; top: 12px; left: 12px; background: #84cc16; color: #191c1a; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 12px; letter-spacing: 0.5px;">TOMATO</div>
+                    <div style="position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; background: rgba(0,0,0,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                  </div>
+                  <div style="padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+                    <h3 style="font-family: var(--font-primary); font-size: 14px; font-weight: 700; color: #191c1a; margin: 0; line-height: 1.2;">Fresh Tomato</h3>
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-family: var(--font-primary); font-weight: 600;">
+                      <span style="color: var(--color-brand-dark);">Valen Angel</span>
+                      <span style="color: var(--color-brand-dark);">•</span>
+                      <span style="color: #dcb000; display: flex; align-items: center; gap: 2px;">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        2.2
+                      </span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 4px; font-size: 11px; font-family: var(--font-primary); font-weight: 600; color: var(--color-brand-dark); margin-top: 4px;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg> Banyuwangi, Jawa Timur
+                    </div>
+                  </div>
+                </a>
+            </div>
+          </section>
+
+          <!-- ⑤ NEW ARTICLE -->
+          <section class="section" style="flex-shrink: 0;" aria-labelledby="article-heading">
+            <header class="section-header">
+              <h3 class="section-header__title" id="article-heading" style="color:#315200; font-family: 'Aileron', sans-serif; font-size: 18px; font-weight: 700;">New Article</h3>
+              <a class="section-header__see-more" href="articles.html" id="see-more-articles" style="color: #886800; font-size: 12px; font-weight: 700;">See More →</a>
+            </header>
+            <div class="articles-grid">
+
+              <!-- Article 1 -->
+              <a href="article-detail.html" class="article-card" id="article-1" tabindex="0" aria-label="2026 Trend: Big Restaurants Are Bypassing">
+                <div class="article-img-wrap">
+                  <img src="article_thumb1.png" alt="Big Restaurants trend" class="article-img" />
+                </div>
+                <div class="article-info">
+                  <h4 class="article-title">2026 Trend: Big Restaurants Are Bypassing</h4>
+                  <span class="article-time">20 Hours Ago</span>
+                </div>
+              </a>
+
+              <!-- Article 2 -->
+              <a href="article-detail.html" class="article-card" id="article-2" tabindex="0" aria-label="Smart Farming: How Increasing Yields b">
+                <div class="article-img-wrap">
+                  <img src="article_thumb2.png" alt="Smart Farming" class="article-img" />
+                </div>
+                <div class="article-info">
+                  <h4 class="article-title">Smart Farming: How Increasing Yields b</h4>
+                  <span class="article-time">1 Day Ago</span>
+                </div>
+              </a>
+
+            </div>
+          </section>
+
+          <!-- Bottom padding for nav -->
+          <div style="height: 90px;" aria-hidden="true"></div>
+
+        </main>
+      </div><!-- /app-content -->
+
+      <!-- BOTTOM NAVIGATION -->
+      <nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi utama">
+        <!-- Home (active) -->
+        <a href="index.html" class="bottom-nav__item active" id="nav-home" aria-label="Home" aria-current="page">
+          <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#6f5900"/>
+            <polyline points="9 22 9 12 15 12 15 22" stroke="#6f5900"/>
+          </svg>
+          <span class="bottom-nav__label" style="color:#6f5900; font-family:var(--font-display); font-weight:700;">Home</span>
+        </a>
+        <!-- Market -->
+        <a href="marketplace.html" class="bottom-nav__item" id="nav-market" aria-label="Market">
+          <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="#424936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l1-5h16l1 5"/>
+            <path d="M3 9a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2 2v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/>
+            <rect x="9" y="14" width="6" height="5" rx="1"/>
+          </svg>
+          <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Market</span>
+        </a>
+        <!-- Forum -->
+        <a href="forum.html" class="bottom-nav__item" id="nav-forum" aria-label="Forum">
+          <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="#424936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Forum</span>
+        </a>
+        <!-- Profile -->
+        <a href="profile.html" class="bottom-nav__item" id="nav-profile" aria-label="Profile">
+          <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="#424936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Profile</span>
+        </a>
+      </nav>
+
+    </div><!-- /phone-frame -->
+  </div><!-- /app-wrapper -->
+
+  <script src="home.js"></script>
+</body>
+</html>

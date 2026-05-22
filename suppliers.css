@@ -1,0 +1,283 @@
+/* ===================================================
+   Suppliers Page Styles
+   Extends design-system.css
+   =================================================== */
+
+/* ---- Wrapper & Frame (reuse home layout) ---- */
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+  padding: 40px 16px;
+}
+
+.phone-frame {
+  width: 412px;
+  height: 917px;
+  background: #fdfdf9; /* slightly off-white background matching design */
+  border-radius: 48px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 10px rgba(0,0,0,0.4),
+    0 40px 80px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  position: relative;
+}
+
+/* ---- Status Bar ---- */
+.status-bar {
+  background: #fdfdf9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px 8px;
+  flex-shrink: 0;
+}
+
+.status-bar__time {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 15px;
+  color: #1a1c1b;
+}
+
+.status-bar__icons svg {
+  fill: #1a1c1b;
+  stroke: #1a1c1b;
+}
+
+/* ---- Main Content area ---- */
+.supp-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.supp-content::-webkit-scrollbar { display: none; }
+
+/* ---- Header (Back + Title) ---- */
+.supp-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px 12px;
+  gap: 16px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-brand-dark);
+}
+
+.supp-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--color-brand-dark);
+}
+
+/* ---- Search Bar ---- */
+.supp-search-wrapper {
+  padding: 0 20px;
+  margin-bottom: 16px;
+}
+
+.supp-search {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1.5px solid #e0e0e0;
+  border-radius: var(--radius-full);
+  padding: 10px 16px;
+  gap: 12px;
+}
+
+.supp-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: #1a1c1b;
+  outline: none;
+}
+
+.supp-search input::placeholder {
+  color: #757575;
+}
+
+.supp-search-icon {
+  color: #757575;
+  flex-shrink: 0;
+}
+
+.supp-filter-icon {
+  color: #757575;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* ---- Filter Chips ---- */
+.supp-chips {
+  display: flex;
+  gap: 12px;
+  padding: 0 20px 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.supp-chips::-webkit-scrollbar { display: none; }
+
+.supp-chip {
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-brand-dark);
+  background: transparent;
+  color: var(--color-brand-dark);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.supp-chip.active {
+  background: var(--color-brand-dark);
+  color: white;
+}
+
+/* ---- Seller List ---- */
+.supp-list {
+  padding: 0 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.supp-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.supp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.supp-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.supp-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.supp-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  color: #1a1c1b;
+  line-height: 1.2;
+}
+
+.supp-loc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-primary);
+  font-size: 11px;
+  color: #757575;
+}
+
+.supp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.supp-tag {
+  background: #84cc16; /* Green matching the design */
+  color: white;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 9px;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.supp-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+  font-family: var(--font-primary);
+  font-size: 11px;
+  color: #757575;
+}
+
+.supp-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #dcb000;
+  font-weight: 700;
+}
+
+.supp-rating span {
+  color: #757575;
+  font-weight: 400;
+}
+
+.supp-stats-dot {
+  color: #bdbdbd;
+}
+
+/* Ensure icons in status bar are dark since bg is light */
+.status-bar__icons path,
+.status-bar__icons rect,
+.status-bar__icons circle {
+  stroke: #1a1c1b;
+}
+.status-bar__icons rect[fill="white"],
+.status-bar__icons circle[fill="white"] {
+  fill: #1a1c1b;
+}
+.status-bar__icons rect[fill="rgba(255,255,255,0.38)"] {
+  fill: rgba(0,0,0,0.2);
+}
+.status-bar__icons path[fill="rgba(255,255,255,0.4)"] {
+  fill: rgba(0,0,0,0.2);
+}
+.status-bar__icons rect[stroke="rgba(255,255,255,0.35)"] {
+  stroke: rgba(0,0,0,0.3);
+}

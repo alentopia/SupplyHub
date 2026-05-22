@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forum Search Results – EcoHub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #FAFAF4;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 0;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #FAFAF4;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; background: #FAFAF4; }
+      .phone-frame { width: 100%; height: 100dvh; border-radius: 0; box-shadow: none; }
+    }
+
+    /* ─── STATUS BAR ─── */
+    .status-bar {
+      background: #154212;
+      padding: 12px 24px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .status-bar__time { color: white; font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .status-bar__icons { display: flex; align-items: center; gap: 6px; }
+
+    /* ─── SEARCH HEADER ─── */
+    .search-header {
+      background: #FAFAF4;
+      padding: 16px 16px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(71,71,71,0.12);
+    }
+
+    .back-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      background: white;
+      border: none;
+      box-shadow: 0 0 8px rgba(51,51,51,0.10);
+      outline: 0.5px solid #AAAAAA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      text-decoration: none;
+      color: #416900;
+    }
+    .back-btn:hover { background: #f4f4ee; }
+
+    .results-search-bar {
+      flex: 1;
+      background: white;
+      box-shadow: 0 0 12px rgba(51,51,51,0.10);
+      border-radius: 32px;
+      outline: 0.5px solid #AAAAAA;
+      height: 40px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 12px 0 40px;
+    }
+    .results-search-bar svg.search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #416900;
+    }
+    .results-search-bar input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #416900;
+      width: 100%;
+    }
+    .results-search-bar input::placeholder { color: #416900; opacity: 0.7; }
+
+    /* ─── RESULTS LABEL ─── */
+    .results-label {
+      padding: 16px 24px;
+      border-bottom: 1px solid #C2C9BB;
+      flex-shrink: 0;
+    }
+    .results-label span {
+      color: #154212;
+      font-size: 13px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      line-height: 18px;
+    }
+
+    /* ─── SCROLLABLE FEED ─── */
+    .results-feed {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 90px;
+      scrollbar-width: none;
+    }
+    .results-feed::-webkit-scrollbar { display: none; }
+
+    /* ─── POST CARD ─── */
+    .post-card {
+      padding: 24px;
+      border-bottom: 1px solid #C2C9BB;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+    }
+    .post-card:active { background: rgba(49,82,0,0.03); }
+
+    .post-card__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .post-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      outline: 1px solid #C2C9BB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .post-avatar.orange { background: rgba(253,138,62,0.20); color: #9A4600; }
+    .post-avatar.green  { background: rgba(45,90,39,0.20);  color: #154212; }
+
+    .post-meta { flex: 1; padding-top: 2px; display: flex; flex-direction: column; gap: 3.5px; }
+    .post-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .post-category {
+      font-size: 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 15px;
+      letter-spacing: 1px;
+    }
+    .post-category.orange { color: #9A4600; }
+    .post-category.green  { color: #154212; }
+    .post-time {
+      color: #42493E;
+      font-size: 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 15px;
+    }
+    .post-author-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-family: 'Inter', sans-serif;
+      line-height: 16.5px;
+    }
+    .post-by    { color: #42493E; font-weight: 500; }
+    .post-author{ color: #1A1C19; font-weight: 700; }
+
+    .post-title {
+      color: #1A1C19;
+      font-size: 17px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      line-height: 23.38px;
+    }
+
+    .post-excerpt {
+      color: #42493E;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 22.75px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-top: 8px;
+    }
+    .post-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #42493E;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 16px;
+      cursor: pointer;
+    }
+    .post-action svg { flex-shrink: 0; }
+    .post-action-spacer { flex: 1; }
+    .post-save { color: #154212; }
+
+    /* ─── BOTTOM NAV ─── */
+    .bottom-nav {
+      flex-shrink: 0;
+      background: white;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+      border-top: 1px solid rgba(193,202,176,0.30);
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 8px 8px 12px;
+      height: 74px;
+    }
+    .bottom-nav__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 16px;
+      border-radius: 9999px;
+      gap: 2px;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .bottom-nav__item.active { background: #f1f5e6; }
+    .bottom-nav__icon { width: 22px; height: 22px; }
+    .bottom-nav__label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: #424936;
+      padding-top: 2px;
+      line-height: 1.33;
+    }
+    .bottom-nav__item.active .bottom-nav__label { color: #6f5900; }
+  </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+          <rect x="0"    y="7"  width="3" height="5"  rx="1" fill="white"/>
+          <rect x="4.5"  y="5"  width="3" height="7"  rx="1" fill="white"/>
+          <rect x="9"    y="2"  width="3" height="10" rx="1" fill="white"/>
+          <rect x="13.5" y="0"  width="3" height="12" rx="1" fill="rgba(255,255,255,0.38)"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+          <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="1.5" fill="white"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(255,255,255,0.35)"/>
+          <rect x="1.5" y="1.5" width="16" height="9"  rx="2.5" fill="white"/>
+          <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SEARCH HEADER -->
+    <div class="search-header">
+      <!-- Back arrow -->
+      <a href="forum.html" class="back-btn" aria-label="Back to Forum">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+
+      <!-- Search bar (non-focused state) -->
+      <div class="results-search-bar">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" value="Topic" placeholder="Topic" readonly />
+      </div>
+    </div>
+
+    <!-- RESULTS LABEL -->
+    <div class="results-label">
+      <span>SEARCH RESULT (345)</span>
+    </div>
+
+    <!-- RESULTS FEED -->
+    <div class="results-feed">
+
+      <!-- POST 1 -->
+      <a href="forum-post.html" class="post-card">
+        <div class="post-card__inner">
+          <div class="post-header">
+            <div class="post-avatar orange">DT</div>
+            <div class="post-meta">
+              <div class="post-meta-top">
+                <span class="post-category orange">Aquaculture</span>
+                <span class="post-time">1hr ago</span>
+              </div>
+              <div class="post-author-row">
+                <span class="post-by">Oleh</span>
+                <span class="post-author">quality_fish</span>
+              </div>
+            </div>
+          </div>
+          <p class="post-title">Ornamental fish care must be carried out carefully to maintain water quality and fish health.</p>
+          <p class="post-excerpt">Provide nutritious food and carry out routine checks to keep the water clean.</p>
+          <div class="post-actions">
+            <div class="post-action">
+              <!-- Heart -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span>12</span>
+            </div>
+            <div class="post-action">
+              <!-- Comment bubble -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>53</span>
+            </div>
+            <div class="post-action-spacer"></div>
+            <!-- Bookmark -->
+            <div class="post-action post-save">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#154212" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- POST 2 -->
+      <a href="forum-post.html" class="post-card">
+        <div class="post-card__inner">
+          <div class="post-header">
+            <div class="post-avatar green">BS</div>
+            <div class="post-meta">
+              <div class="post-meta-top">
+                <span class="post-category green">Agriculture</span>
+                <span class="post-time">2h ago</span>
+              </div>
+              <div class="post-author-row">
+                <span class="post-by">Oleh</span>
+                <span class="post-author">farm_friend</span>
+              </div>
+            </div>
+          </div>
+          <p class="post-title">Tips for eradicating brown planthopper pests organically for this planting season?</p>
+          <p class="post-excerpt">I've tried chemical pesticides but they are less effective. Any recommendations for a powerful natural pesticide concoction?</p>
+          <div class="post-actions">
+            <div class="post-action">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span>34</span>
+            </div>
+            <div class="post-action">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>87</span>
+            </div>
+            <div class="post-action-spacer"></div>
+            <div class="post-action post-save">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#154212" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- POST 3 -->
+      <a href="forum-post.html" class="post-card">
+        <div class="post-card__inner">
+          <div class="post-header">
+            <div class="post-avatar orange">CT</div>
+            <div class="post-meta">
+              <div class="post-meta-top">
+                <span class="post-category orange">Livestock</span>
+                <span class="post-time">2h ago</span>
+              </div>
+              <div class="post-author-row">
+                <span class="post-by">Oleh</span>
+                <span class="post-author">happy_chicken</span>
+              </div>
+            </div>
+          </div>
+          <p class="post-title">More attention is needed to maintain the health of chickens so they are not affected by bird flu.</p>
+          <p class="post-excerpt">Make sure the coop is always clean and dry to prevent infection from spreading.</p>
+          <div class="post-actions">
+            <div class="post-action">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span>30</span>
+            </div>
+            <div class="post-action">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>200</span>
+            </div>
+            <div class="post-action-spacer"></div>
+            <div class="post-action post-save">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#154212" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- POST 4 -->
+      <a href="forum-post.html" class="post-card">
+        <div class="post-card__inner">
+          <div class="post-header">
+            <div class="post-avatar orange">BT</div>
+            <div class="post-meta">
+              <div class="post-meta-top">
+                <span class="post-category orange">Livestock</span>
+                <span class="post-time">3h ago</span>
+              </div>
+              <div class="post-author-row">
+                <span class="post-by">Oleh</span>
+                <span class="post-author">prosperous_farmer</span>
+              </div>
+            </div>
+          </div>
+          <p class="post-title">Early preventive measures against disease in livestock are a crucial step for farmers.</p>
+          <p class="post-excerpt">Routine vaccination and proper hygiene can help prevent the spread of disease in your herd.</p>
+          <div class="post-actions">
+            <div class="post-action">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              <span>25</span>
+            </div>
+            <div class="post-action">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#42493E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+              <span>130</span>
+            </div>
+            <div class="post-action-spacer"></div>
+            <div class="post-action post-save">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#154212" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /results-feed -->
+
+    <!-- BOTTOM NAVIGATION (Forum active) -->
+    <nav class="bottom-nav" id="bottom-nav" aria-label="Main Navigation">
+      <!-- Home -->
+      <a href="index.html" class="bottom-nav__item" id="nav-home" aria-label="Home">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#424936"/>
+          <polyline points="9 22 9 12 15 12 15 22" stroke="#424936"/>
+        </svg>
+        <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Home</span>
+      </a>
+
+      <!-- Market -->
+      <a href="marketplace.html" class="bottom-nav__item" id="nav-market" aria-label="Market">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l1-5h16l1 5" stroke="#424936"/>
+          <path d="M3 9a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z" stroke="#424936"/>
+          <rect x="9" y="14" width="6" height="5" rx="1" stroke="#424936"/>
+        </svg>
+        <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Market</span>
+      </a>
+
+      <!-- Forum (active) -->
+      <a href="forum.html" class="bottom-nav__item active" id="nav-forum" aria-label="Forum" aria-current="page">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#6f5900"/>
+        </svg>
+        <span class="bottom-nav__label" style="color:#6f5900; font-family:var(--font-display); font-weight:700;">Forum</span>
+      </a>
+
+      <!-- Profile -->
+      <button class="bottom-nav__item" id="nav-profile" aria-label="Profile">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="#424936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span class="bottom-nav__label" style="font-family:var(--font-display); font-weight:700;">Profile</span>
+      </button>
+    </nav>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

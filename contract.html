@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contract Making – ProduceUI</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="contract.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+    
+    <!-- Top App Bar -->
+    <header class="app-bar">
+      <button class="back-btn" onclick="window.location.href='chat.html'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
+      <h1 class="app-title">Contract Making</h1>
+    </header>
+
+    <!-- Scrollable Content -->
+    <main class="contract-content">
+      
+      <div class="page-header">
+        <h2>Contract Making</h2>
+        <p>Complete details for a new commodity agreement draft.</p>
+      </div>
+
+      <div class="form-card">
+        
+        <!-- Seller -->
+        <div class="form-group">
+          <span class="form-label">Seller</span>
+          <div class="seller-row">
+            <div class="seller-chip">
+              <div class="seller-avatar">
+                <img src="avatar_pak_budi.png" alt="Pak Budi" />
+                <div class="status-dot"></div>
+              </div>
+              <div class="seller-info">
+                <h3 class="seller-name">Pak Budi</h3>
+                <span class="seller-status">Online</span>
+              </div>
+            </div>
+            <button class="add-seller-btn">Add Seller</button>
+          </div>
+        </div>
+
+        <!-- Seller Location -->
+        <div class="form-group">
+          <span class="form-label">Seller Location</span>
+          <div class="input-box">
+            <input type="text" class="input-field" value="Pak Budi's Location ( 15.5 km From you )" />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Commodity Name -->
+        <div class="form-group">
+          <span class="form-label">Commodity Name</span>
+          <div class="input-box">
+            <input type="text" class="input-field" value="Organic Premium Carrot" />
+          </div>
+        </div>
+
+        <!-- Quantity & Unit -->
+        <div class="grid-2">
+          <div class="form-group">
+            <span class="form-label">Quantity</span>
+            <div class="input-box">
+              <input type="number" class="input-field" value="10" />
+            </div>
+          </div>
+          <div class="form-group">
+            <span class="form-label">Unit</span>
+            <div class="input-box">
+              <select class="input-field" style="appearance: none; background: transparent; cursor: pointer;">
+                <option value="kg">Kilogram (kg)</option>
+                <option value="ton">Ton</option>
+              </select>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit Price -->
+        <div class="form-group">
+          <span class="form-label">Unit Price (Rp)</span>
+          <div class="input-box">
+            <span class="input-prefix">Rp</span>
+            <input type="text" class="input-field" value="15.000" />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Add Commodity -->
+        <div class="action-btn-light">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#154212" stroke-width="2" stroke-linecap="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <p>Add Commodity</p>
+        </div>
+
+        <div class="divider" style="background: rgba(89,89,89,0.2);"></div>
+
+        <!-- Delivery Method -->
+        <div class="form-group">
+          <span class="form-label">Delivery Method</span>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="deliveryMethod" value="SupplyHub" checked />
+              <div class="radio-circle"></div>
+              <span class="radio-label">SupplyHub Delivery</span>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="deliveryMethod" value="Self" />
+              <div class="radio-circle"></div>
+              <span class="radio-label">Self Delivery</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Delivery Service Type -->
+        <div class="form-group">
+          <span class="form-label">Delivery Service Type</span>
+          <div class="input-box" style="margin-bottom: 2px; justify-content: space-between; cursor: pointer;" onclick="document.getElementById('deliveryDropdown').style.display = document.getElementById('deliveryDropdown').style.display === 'none' ? 'flex' : 'none'">
+            <span style="color: #979797;">Select Delivery Service...</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          
+          <div id="deliveryDropdown" style="display: none; flex-direction: column;">
+            <div class="dropdown-item">
+              <div class="dropdown-item-header">
+                <h4 class="dropdown-item-title">Diamond Delivery ( 2 - 4 Days )</h4>
+                <span class="dropdown-item-price">Rp 500.000</span>
+              </div>
+              <p class="dropdown-item-desc">Max Cap. 1 Ton, Cold Storage, AI Routing System</p>
+            </div>
+            
+            <div class="dropdown-item">
+              <div class="dropdown-item-header">
+                <h4 class="dropdown-item-title">Gold Delivery ( 3 - 6 Days )</h4>
+                <span class="dropdown-item-price">Rp 300.000</span>
+              </div>
+              <p class="dropdown-item-desc">Max Cap. 500 Kgs, Controlled Temp, 80% Insurance</p>
+            </div>
+            
+            <div class="dropdown-item">
+              <div class="dropdown-item-header">
+                <h4 class="dropdown-item-title">Silver Delivery ( 4 - 8 Days )</h4>
+                <span class="dropdown-item-price">Rp 100.000</span>
+              </div>
+              <p class="dropdown-item-desc">Max Cap. 100 Kgs, Standard Storage, 20% Insurance</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delivery Schedule -->
+        <div class="form-group">
+          <span class="form-label">Delivery Schedule</span>
+          <div class="input-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1c19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <input type="text" class="input-field" value="15 / 09 / 2026" />
+          </div>
+        </div>
+
+        <!-- Quality Checking Service -->
+        <div class="input-box" style="justify-content: space-between;">
+          <label class="custom-checkbox" style="gap: 10px;">
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+            <span style="font-weight: 700; color: #42493e;">Quality Checking Service</span>
+          </label>
+          <span style="font-weight: 700; color: #416900;">Rp 150.000</span>
+        </div>
+
+        <!-- Total Contract Value -->
+        <div class="summary-card">
+          <div>
+            <p class="summary-title">Total Contract Value</p>
+            <h3 class="summary-value">Rp 150.000</h3>
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#154212" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+            <path d="M15 15h2"></path>
+            <path d="M15 18h2"></path>
+          </svg>
+        </div>
+
+        <!-- Additional Terms & Conditions -->
+        <div class="form-group">
+          <span class="form-label" style="text-align: center;">Additional Terms & Conditions</span>
+          <div class="textarea-box">
+            <textarea class="textarea-field" placeholder="Write down notes or special instructions here..."></textarea>
+            <div class="textarea-actions">
+              <svg class="textarea-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+              </svg>
+              <svg class="textarea-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+              <svg class="textarea-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Bottom Action -->
+    <div class="bottom-action-bar">
+      <button class="btn-primary">Create Contract</button>
+      <div class="disclaimer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+        <span>This contract is legally binding for both parties.</span>
+      </div>
+    </div>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

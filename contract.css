@@ -1,0 +1,501 @@
+/* ===================================================
+   Contract Making CSS
+   Extends design-system.css
+   =================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary, 'Inter', sans-serif);
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+  padding: 40px 16px;
+}
+
+.phone-frame {
+  width: 412px;
+  height: 917px;
+  background-color: #fafaf4;
+  border-radius: 48px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 10px rgba(0,0,0,0.4),
+    0 40px 80px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  position: relative;
+}
+
+/* App Bar */
+.app-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px 16px;
+  border-bottom: 1px solid rgba(194, 201, 187, 0.4);
+  background: #fafaf4;
+  flex-shrink: 0;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #42493e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #002b02;
+  margin: 0;
+}
+
+/* Scrollable Content */
+.contract-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 16px 100px; /* bottom padding for sticky bar */
+}
+
+.contract-content::-webkit-scrollbar {
+  display: none;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h2 {
+  font-size: 16px;
+  color: #002b02;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.page-header p {
+  font-size: 16px;
+  color: #42493e;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.form-card {
+  background: transparent;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #42493e;
+}
+
+/* Custom Inputs */
+.input-box {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(194, 201, 187, 0.3);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.input-box.disabled {
+  color: #979797;
+  font-weight: 600;
+}
+
+.input-field {
+  border: none;
+  background: transparent;
+  flex: 1;
+  font-size: 16px;
+  color: #0c0c0c;
+  outline: none;
+  width: 100%;
+}
+
+.input-prefix {
+  color: #42493e;
+  font-size: 16px;
+}
+
+/* Seller Row */
+.seller-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.seller-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: 32px;
+  border: 1px solid #a6a6a6;
+  background: transparent;
+}
+
+.seller-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.seller-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background: #84cc16;
+  border: 2px solid #fafaf4;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.seller-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.seller-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #416900;
+  margin: 0;
+}
+
+.seller-status {
+  font-weight: 700;
+  font-size: 12px;
+  color: #424936;
+  margin: 0;
+}
+
+.add-seller-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 32px;
+  border: 1px solid #bcbcbc;
+  background: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  color: #416900;
+  cursor: pointer;
+  height: 58px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(194, 201, 187, 0.2);
+  margin: 0;
+}
+
+/* Grid Layout */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Action button light */
+.action-btn-light {
+  background: rgba(21, 66, 18, 0.05);
+  border: 1px solid rgba(21, 66, 18, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.action-btn-light p {
+  color: #154212;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Radio Buttons */
+.radio-group {
+  display: flex;
+  gap: 16px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio-item input {
+  display: none;
+}
+
+.radio-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #42493e;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-item input:checked + .radio-circle {
+  border-color: #416900;
+}
+
+.radio-item input:checked + .radio-circle::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #416900;
+  border-radius: 50%;
+}
+
+.radio-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #42493e;
+}
+
+/* Dropdown Option Item */
+.dropdown-item {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(194, 201, 187, 0.3);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.dropdown-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-item-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #3d3c3c;
+  margin: 0;
+}
+
+.dropdown-item-price {
+  font-weight: 600;
+  font-size: 16px;
+  color: #416900;
+  margin: 0;
+}
+
+.dropdown-item-desc {
+  font-weight: 600;
+  font-size: 10px;
+  color: #a4a4a4;
+  margin: 0;
+}
+
+/* Summary Card */
+.summary-card {
+  background: rgba(21, 66, 18, 0.05);
+  border: 1px solid rgba(21, 66, 18, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary-title {
+  color: #42493e;
+  font-size: 16px;
+  margin: 0 0 4px 0;
+}
+
+.summary-value {
+  color: #002b02;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Textarea */
+.textarea-box {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(194, 201, 187, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.textarea-field {
+  border: none;
+  resize: none;
+  padding: 16px;
+  font-size: 16px;
+  color: #72796e;
+  font-family: inherit;
+  outline: none;
+  min-height: 100px;
+}
+
+.textarea-actions {
+  background: #f4f4ee;
+  border-top: 1px solid rgba(194, 201, 187, 0.2);
+  padding: 8px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.textarea-icon {
+  color: #42493e;
+  cursor: pointer;
+}
+
+/* Bottom Action Bar */
+.bottom-action-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(250, 250, 244, 0) 0%, #fafaf4 20%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 10;
+}
+
+.btn-primary {
+  background: #002b02;
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 8px 10px -6px rgba(0,0,0,0.1), 0 20px 25px -5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #42493e;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Checkbox */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  height: 24px;
+  width: 24px;
+  background-color: #b4b4b4;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #a0a0a0;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #416900;
+}
+
+.checkmark:after {
+  content: "";
+  display: none;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .app-wrapper {
+    padding: 0;
+  }
+  .phone-frame {
+    width: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

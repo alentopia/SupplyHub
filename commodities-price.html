@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commodities Price – ProduceUI</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="commodities.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+
+    <!-- STATUS BAR -->
+    <div class="status-bar" style="background:transparent; z-index:20; padding-top:24px;">
+      <span class="status-bar__time" style="color:#1a1c1b;">9:41</span>
+      <div class="status-bar__icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+          <rect x="0"   y="7"  width="3" height="5" rx="1" fill="#1a1c1b"/>
+          <rect x="4.5" y="5"  width="3" height="7" rx="1" fill="#1a1c1b"/>
+          <rect x="9"   y="2"  width="3" height="10" rx="1" fill="#1a1c1b"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1" fill="rgba(0,0,0,0.2)"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+          <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="1.5" fill="#1a1c1b"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(0,0,0,0.3)"/>
+          <rect x="1.5" y="1.5" width="16" height="9" rx="2.5" fill="#1a1c1b"/>
+          <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(0,0,0,0.2)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- TOP APP BAR -->
+    <header class="cp-header" style="height:64px;">
+      <div class="cp-header-left">
+        <button class="cp-back-btn" aria-label="Go back" onclick="window.location.href='index.html'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+        <h1 class="cp-header-title">Commodities Price</h1>
+      </div>
+    </header>
+
+    <!-- SCROLLABLE CONTENT -->
+    <main class="cp-content">
+      
+      <!-- Search Bar -->
+      <div class="cp-search">
+        <svg class="cp-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" placeholder="Search Commodities..." />
+        <svg class="cp-filter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="21" x2="4" y2="14"></line>
+          <line x1="4" y1="10" x2="4" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="3"></line>
+          <line x1="20" y1="21" x2="20" y2="16"></line>
+          <line x1="20" y1="12" x2="20" y2="3"></line>
+          <line x1="1" y1="14" x2="7" y2="14"></line>
+          <line x1="9" y1="8" x2="15" y2="8"></line>
+          <line x1="17" y1="16" x2="23" y2="16"></line>
+        </svg>
+      </div>
+
+      <!-- Market Insight Card -->
+      <div class="market-insight">
+        <div class="market-insight-bg"></div>
+        <div>
+          <h2 class="insight-title">Market Insight</h2>
+          <p class="insight-desc">Prices are stabilizing across Bandung<br>markets today.</p>
+          <div class="insight-stat-row">
+            <span class="insight-stat">-2.4%</span>
+            <span class="insight-stat-label">Average daily change</span>
+          </div>
+        </div>
+        <div class="insight-update">Last updated: 10:24 AM</div>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="cp-tabs" id="category-tabs">
+        <div class="cp-tab active" data-target="list-staples">STAPLES</div>
+        <div class="cp-tab" data-target="list-livestock">LIVESTOCK</div>
+        <div class="cp-tab" data-target="list-seafood">SEAFOOD</div>
+        <div class="cp-tab" data-target="list-produce">FRESH PRODUCE</div>
+      </div>
+
+      <!-- Commodity List -->
+      <div class="cp-list">
+        
+        <!-- STAPLES -->
+        <div id="list-staples" class="cp-tab-content">
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="premium_rice.png" alt="Premium Rice" class="cp-card-img" /></div>
+              <div class="cp-card-title">Premium Rice</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 14.500 / Kg</div>
+              <div class="cp-card-change down">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 6 11 1"></polyline></svg>
+                Rp 200
+              </div>
+            </div>
+          </div>
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="birds_eye_chili.png" alt="Bird's Eye Chili" class="cp-card-img" /></div>
+              <div class="cp-card-title">Bird's Eye Chili</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 65.200 / Kg</div>
+              <div class="cp-card-change up">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 6 6 1 11 6"></polyline></svg>
+                Rp 1.500
+              </div>
+            </div>
+          </div>
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="garlic.png" alt="Garlic" class="cp-card-img" /></div>
+              <div class="cp-card-title">Garlic</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 34.800 / Kg</div>
+              <div class="cp-card-change down">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 6 11 1"></polyline></svg>
+                Rp 450
+              </div>
+            </div>
+          </div>
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="red_onion.png" alt="Red Onion" class="cp-card-img" /></div>
+              <div class="cp-card-title">Red Onion</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 28.000 / Kg</div>
+              <div class="cp-card-change up">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 6 6 1 11 6"></polyline></svg>
+                Rp 300
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LIVESTOCK -->
+        <div id="list-livestock" class="cp-tab-content" style="display:none;">
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="beef_meat.png" alt="Premium Beef" class="cp-card-img" /></div>
+              <div class="cp-card-title">Premium Beef</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 120.000 / Kg</div>
+              <div class="cp-card-change up">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 6 6 1 11 6"></polyline></svg>
+                Rp 2.000
+              </div>
+            </div>
+          </div>
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="chicken_meat.png" alt="Whole Chicken" class="cp-card-img" /></div>
+              <div class="cp-card-title">Whole Chicken</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 35.000 / Kg</div>
+              <div class="cp-card-change down">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 6 11 1"></polyline></svg>
+                Rp 500
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEAFOOD -->
+        <div id="list-seafood" class="cp-tab-content" style="display:none;">
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="shrimp.png" alt="Tiger Shrimp" class="cp-card-img" /></div>
+              <div class="cp-card-title">Tiger Shrimp</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 85.000 / Kg</div>
+              <div class="cp-card-change up">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 6 6 1 11 6"></polyline></svg>
+                Rp 1.200
+              </div>
+            </div>
+          </div>
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="tilapia.png" alt="Tilapia Fish" class="cp-card-img" /></div>
+              <div class="cp-card-title">Tilapia Fish</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 28.500 / Kg</div>
+              <div class="cp-card-change down">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 6 11 1"></polyline></svg>
+                Rp 300
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRESH PRODUCE -->
+        <div id="list-produce" class="cp-tab-content" style="display:none;">
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="tomato.png" alt="Fresh Tomato" class="cp-card-img" /></div>
+              <div class="cp-card-title">Fresh Tomato</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 12.000 / Kg</div>
+              <div class="cp-card-change down">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 6 11 1"></polyline></svg>
+                Rp 150
+              </div>
+            </div>
+          </div>
+          <div class="cp-card" onclick="window.location.href='commodity-detail.html'" style="cursor: pointer;">
+            <div class="cp-card-left">
+              <div class="cp-card-img-wrap"><img src="carrot.png" alt="Carrot" class="cp-card-img" /></div>
+              <div class="cp-card-title">Carrot</div>
+            </div>
+            <div class="cp-card-right">
+              <div class="cp-card-price">Rp 15.500 / Kg</div>
+              <div class="cp-card-change up">
+                <svg viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 6 6 1 11 6"></polyline></svg>
+                Rp 400
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+<script>
+  // Tab switching logic
+  const tabs = document.querySelectorAll('.cp-tab');
+  const contents = document.querySelectorAll('.cp-tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove('active'));
+      // Add active class to clicked tab
+      tab.classList.add('active');
+
+      // Hide all contents
+      contents.forEach(c => c.style.display = 'none');
+      // Show targeted content
+      const targetId = tab.getAttribute('data-target');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) targetEl.style.display = 'block';
+    });
+  });
+
+  // Drag to scroll logic for tabs
+  const tabsContainer = document.getElementById('category-tabs');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  tabsContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    tabsContainer.style.cursor = 'grabbing';
+    startX = e.pageX - tabsContainer.offsetLeft;
+    scrollLeft = tabsContainer.scrollLeft;
+  });
+  tabsContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+    tabsContainer.style.cursor = 'pointer';
+  });
+  tabsContainer.addEventListener('mouseup', () => {
+    isDown = false;
+    tabsContainer.style.cursor = 'pointer';
+  });
+  tabsContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - tabsContainer.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    tabsContainer.scrollLeft = scrollLeft - walk;
+  });
+</script>
+</body>
+</html>

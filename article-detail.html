@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Featured News Article – ProduceUI</title>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#91db2a",
+                        "surface": "#f8faf5",
+                        "on-background": "#191c1a",
+                        "on-tertiary-fixed": "#301400",
+                        "tertiary-container": "#ffa35d",
+                        "on-surface": "#191c1a",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "tertiary-fixed": "#ffdcc5",
+                        "tertiary": "#944a00",
+                        "on-primary-fixed-variant": "#304f00",
+                        "secondary-container": "#fed01b",
+                        "primary-fixed-dim": "#91db2a",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffe083",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#6f5900",
+                        "inverse-surface": "#2e312e",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary": "#735c00",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#102000",
+                        "on-secondary-fixed": "#231b00",
+                        "inverse-on-surface": "#eff1ec",
+                        "surface-container": "#ecefea",
+                        "surface-bright": "#f8faf5",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-dim": "#d8dbd6",
+                        "on-primary-container": "#315200",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f2f4ef",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3de",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#eec200",
+                        "outline-variant": "#c1cab0",
+                        "primary": "#416900",
+                        "surface-container-highest": "#e1e3de",
+                        "primary-container": "#84cc16",
+                        "surface-container-high": "#e7e9e4",
+                        "on-tertiary-container": "#743900",
+                        "surface-tint": "#416900",
+                        "outline": "#727a64",
+                        "background": "#f8faf5",
+                        "primary-fixed": "#acf847",
+                        "on-surface-variant": "#424936"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "lg": "40px",
+                        "margin-desktop": "80px",
+                        "base": "8px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+  </script>
+  <style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    /* Native App Layout Styles */
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: theme('colors.background');
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    .app-content {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    .app-content::-webkit-scrollbar { display: none; }
+    .app-content { scrollbar-width: none; }
+  </style>
+</head>
+
+<body class="antialiased">
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+    <div class="app-content bg-surface text-on-surface">
+
+      <!-- Transparent Top Navigation (Task-focused, replaces global nav) -->
+      <nav class="absolute top-0 left-0 w-full flex justify-between items-center p-margin-mobile z-20">
+        <a href="articles.html" class="w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md flex items-center justify-center text-on-surface active:scale-95 transition-transform duration-200 shadow-sm border border-surface-variant/50">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <button class="w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md flex items-center justify-center text-on-surface active:scale-95 transition-transform duration-200 shadow-sm border border-surface-variant/50">
+          <span class="material-symbols-outlined">share</span>
+        </button>
+      </nav>
+
+      <!-- Hero Section -->
+      <header class="w-full h-[360px] relative z-10">
+        <img alt="Featured Article Hero" class="w-full h-full object-cover rounded-b-xl shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDXzzkwgsfa3rn15BUmQAVIt-l7akGwwiYtrt1jIpPhNcOGNZNDCa1WSAahKRoKORKGJYlaGDtjGmLfvBeZ5LEuKmfaQBWokEtZP8LcWnnYulCwsgwoT042FWZoHcxbSM9xpLIj8ltiG1mVlgWgdF7p4XCa68PqSpXsG5HctgEK--AA4S2idzaSI97uYE52hrS3tyZP97qMR_BHLWBJvrbmttvuBCrOLz4ZlLV4OxZE-BIZv6lmJ4VR8ox6EWAM0lDRGiPkpDnaqJy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-b-xl"></div>
+      </header>
+
+      <!-- Content Canvas -->
+      <main class="relative z-20 -mt-6 bg-surface rounded-t-xl px-margin-mobile pt-lg pb-xl flex flex-col gap-md">
+        
+        <!-- Metadata -->
+        <div class="flex items-center gap-sm flex-wrap">
+          <span class="bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">
+            Market Trends
+          </span>
+          <div class="flex items-center text-outline font-label-sm text-label-sm gap-xs">
+            <span class="material-symbols-outlined text-[16px]">schedule</span>
+            <span>5 min read</span>
+          </div>
+          <span class="text-outline font-label-sm text-label-sm">•</span>
+          <span class="text-outline font-label-sm text-label-sm">May 22, 2026</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">
+          2026 Trend: Big Restaurants Are Bypassing Middlemen &amp; Going Direct to Farmers!
+        </h1>
+
+        <!-- Author -->
+        <div class="flex items-center gap-sm py-xs border-y border-surface-variant/50">
+          <img class="w-12 h-12 rounded-full object-cover border-2 border-surface" data-alt="Author profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3NhxJXEAnnhl-mMR9i6oVzrCmU2vyBQHI7fV52UAnxbvfbTRJlOn0yrwEV9AuakvJqwILrVM-ObaPOcWYwcKZPKlxmCxTg87xGl26aUL7TRF-Tzo-VzARLFTzoGyx68K3Aa2Qub4SEPdH7eAkyu63j_vkBqFRSjBenn-L0Zcgjqydzbj08AVBa7IjCLqtKnxDNifXURbeipX3L7fZ16vQoPQ-0_GMQqEJ02d4mRCHTcOYyKyDLYBMRi90lAjb83M8tbxzz1ozoOLj"/>
+          <div class="flex flex-col">
+            <span class="font-label-lg text-label-lg text-on-surface">Bima Adhitya</span>
+            <span class="font-body-md text-body-md text-outline">Agri-Business Analyst</span>
+          </div>
+        </div>
+
+        <!-- Article Body -->
+        <article class="flex flex-col gap-sm">
+          <p class="font-body-md text-body-md text-on-surface font-bold leading-[1.6]">
+            Middlemen are slowly fading out. Huge F&amp;B corps and supermarkets now prefer direct contracts with local farmers. Thicker margins, safer supply.
+          </p>
+          <p class="font-body-md text-body-md text-on-surface-variant leading-[1.6]">
+            This shift isn't just about cutting costs; it's a fundamental restructuring of the food supply chain. By leveraging modern digital platforms like TaniDirect, regional restaurant chains can now forecast their produce needs months in advance and secure reliable harvests directly from the source.
+          </p>
+          <p class="font-body-md text-body-md text-on-surface-variant leading-[1.6]">
+            Farmers benefit equally, enjoying guaranteed offtake agreements and faster payment cycles. The traditional wholesale markets, while still present, are seeing a decline in premium, high-volume transactions as transparency and traceability become paramount for end consumers.
+          </p>
+        </article>
+
+        <!-- CTA -->
+        <button class="w-full bg-primary-container text-on-primary-container font-label-lg text-label-lg py-4 rounded-full flex items-center justify-center gap-xs shadow-[0px_10px_30px_rgba(132,204,22,0.15)] active:scale-97 transition-transform duration-200 mt-sm">
+          Read Full Story on Web
+          <span class="material-symbols-outlined text-[20px]">open_in_new</span>
+        </button>
+
+        <!-- Teasers Section -->
+        <section class="mt-lg flex flex-col gap-sm border-t border-surface-variant/50 pt-lg">
+          <h3 class="font-headline-md text-headline-md text-on-surface">You might also like</h3>
+          <div class="flex flex-col gap-sm">
+            <!-- Teaser Card 1 -->
+            <div class="flex gap-sm bg-surface-container-low p-sm rounded-[1rem] active:scale-97 transition-transform duration-200 cursor-pointer border border-surface-variant/30 hover:shadow-sm">
+              <img class="w-20 h-20 rounded-[0.5rem] object-cover" data-alt="Teaser image 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASZkJL5AQ6AbsTAsjeRIfyOCvLE7pXmUGfG8c8sZwGgZUEPPuf7aa6fvxXCzS83ppzQzGaSzxuUoGtngmscbxkVaeSOunPR4z-7CruiF_NI9W3DGHXR6vfBXBbcwttiZVOD1FJA3iSzoglb8ePbh2rEezqI4hx_nwApnyBKuQybhXOfJhIKl4lVOm8Km2DX8FmKIndnizSuKw-LSqb8VZR6Un3kCIdmGIYgLh7MRVhYpFth8rg8eXm19oPXll8Cc2QJWP8tQMso3Rv"/>
+              <div class="flex flex-col justify-center gap-xs">
+                <span class="font-label-sm text-label-sm text-tertiary uppercase">Technology</span>
+                <h4 class="font-label-lg text-label-lg text-on-surface line-clamp-2 leading-tight">New AI Tools Help Farmers Predict Yields with 90% Accuracy</h4>
+              </div>
+            </div>
+
+            <!-- Teaser Card 2 -->
+            <div class="flex gap-sm bg-surface-container-low p-sm rounded-[1rem] active:scale-97 transition-transform duration-200 cursor-pointer border border-surface-variant/30 hover:shadow-sm">
+              <img class="w-20 h-20 rounded-[0.5rem] object-cover" data-alt="Teaser image 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfusAPLfB30Z-nQAiLWZyzRs_pEWRk8s0DL7iwCu_a4EPAdrb4XZxauua8-nY8nwN1c0oaBtXxwrIsMueK_UbiWhoMu-7HDqxnJpGBUVndagtigz8QCq1lw4yosQQ32cwvCYnEQUH6Xmz2NqshD6bxZVba7Y4X6wsOgvrQy66DVmQRJAimi0m6j5rNCA0UjBZKK-li1VrCerxQ_xnWFZtlt1FlquDqOOW4-lJAGlbNYMfKjtNhvMyTWMEVKlWkfYzWHW1n9puNOCbe"/>
+              <div class="flex flex-col justify-center gap-xs">
+                <span class="font-label-sm text-label-sm text-primary uppercase">Sustainability</span>
+                <h4 class="font-label-lg text-label-lg text-on-surface line-clamp-2 leading-tight">Zero-Waste Packaging Initiatives Taking Root in Rural Markets</h4>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+    </div><!-- /app-content -->
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

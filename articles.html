@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricultural Articles – ProduceUI</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="stylesheet" href="articles.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+          <rect x="0"   y="7"  width="3" height="5" rx="1" fill="white"/>
+          <rect x="4.5" y="5"  width="3" height="7" rx="1" fill="white"/>
+          <rect x="9"   y="2"  width="3" height="10" rx="1" fill="white"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1" fill="rgba(255,255,255,0.38)"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+          <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="1.5" fill="white"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(255,255,255,0.35)"/>
+          <rect x="1.5" y="1.5" width="16" height="9" rx="2.5" fill="white"/>
+          <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SCROLLABLE CONTENT -->
+    <div class="art-content">
+      
+      <!-- HEADER -->
+      <header class="art-header">
+        <a href="index.html" class="art-icon-btn" aria-label="Go back">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+        <button class="art-icon-btn" aria-label="Search articles">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </header>
+
+      <h1 class="art-page-title">Agricultural Articles</h1>
+
+      <!-- ARTICLES LIST -->
+      <main class="art-list" role="main">
+
+        <!-- Article 1: Tomatoes -->
+        <article class="art-card" tabindex="0" onclick="window.location.href='article-detail.html'">
+          <div class="art-img-wrap">
+            <img src="product_tomato.png" alt="Tomatoes in small spaces" class="art-img" style="filter: brightness(0.95); object-position: center;" />
+          </div>
+          <div class="art-body">
+            <div class="art-meta">
+              <div class="art-badge art-badge--popular">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19c-2.5 2-5.5 2-8 0-1.5-1.5-2.5-3.5-2.5-6 0-3 2-6 5-8 1 1 2.5 1.5 4 1.5 1.5 0 3-1 4-2.5 0 2.5 1 5 2.5 6.5.5.5.5 1 0 1.5-1 1.5-2.5 1.5-5 1z"/></svg>
+                POPULAR
+              </div>
+              <div class="art-time">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                7 min read
+              </div>
+            </div>
+            <h2 class="art-title">How to Successfully Grow Tomatoes in Small Spaces</h2>
+            <p class="art-desc">Learn the best practices for container gardening and maximizing your harvest</p>
+          </div>
+        </article>
+
+        <!-- Article 2: Fertilizer -->
+        <article class="art-card" tabindex="0" onclick="window.location.href='article-detail.html'">
+          <div class="art-img-wrap">
+            <img src="prod_fertilizer.png" alt="Liquid organic fertilizer" class="art-img" style="filter: brightness(0.9); object-position: center 30%;" />
+          </div>
+          <div class="art-body">
+            <div class="art-meta">
+              <div class="art-badge art-badge--yellow">
+                PLANTING TIPS
+              </div>
+              <div class="art-time">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                5 min read
+              </div>
+            </div>
+            <h2 class="art-title">Benefits of Liquid Organic Fertilizer</h2>
+            <p class="art-desc">Discover why liquid organic fertilizers are becoming the top choice for..</p>
+          </div>
+        </article>
+
+        <!-- Article 3: Pests -->
+        <article class="art-card" tabindex="0" onclick="window.location.href='article-detail.html'">
+          <div class="art-img-wrap">
+            <img src="banner_farm.png" alt="Natural pests ladybug" class="art-img" style="filter: brightness(0.95); object-position: center;" />
+          </div>
+          <div class="art-body">
+            <div class="art-meta">
+              <div class="art-badge art-badge--orange">
+                PESTS & DISEASES
+              </div>
+              <div class="art-time">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                4 min read
+              </div>
+            </div>
+            <h2 class="art-title">Natural Pests: Friend or Foe?</h2>
+            <p class="art-desc">A guide to identifying beneficial insects and those that might be damaging your</p>
+          </div>
+        </article>
+
+        <!-- Article 4: Irrigation -->
+        <article class="art-card" tabindex="0" onclick="window.location.href='article-detail.html'">
+          <div class="art-img-wrap">
+            <img src="article_thumb2.png" alt="Irrigation techniques" class="art-img" style="filter: brightness(0.95); object-position: center;" />
+          </div>
+          <div class="art-body">
+            <div class="art-meta">
+              <div class="art-badge art-badge--green">
+                SUSTAINABILITY
+              </div>
+              <div class="art-time">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                6 min read
+              </div>
+            </div>
+            <h2 class="art-title">Water-Saving Irrigation Techniques</h2>
+            <p class="art-desc">Protect your farm from drought with these modern water conservation and..</p>
+          </div>
+        </article>
+
+      </main>
+
+      <!-- Bottom Padding -->
+      <div style="height: 24px;"></div>
+
+    </div><!-- /art-content -->
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

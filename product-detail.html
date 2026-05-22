@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Supply Hub - Premium Organic Carrots</title>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            primary: '#84cc16',
+            'primary-dark': '#65a30d',
+            'primary-light': '#ecfccb',
+            surface: '#f8faf5',
+            'surface-dim': '#d8dbd6',
+            'surface-bright': '#ffffff',
+            text: '#1f2937',
+            'text-muted': '#4b5563',
+            'text-light': '#9ca3af',
+          },
+          borderRadius: {
+            'xl': '1rem',
+            '2xl': '1.5rem',
+            '3xl': '2rem',
+            'full': '9999px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f8faf5;
+      color: #1f2937;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+    }
+    
+    /* Native App Layout Styles */
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+      box-sizing: border-box;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    .app-content {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      scrollbar-width: none;
+    }
+    .app-content::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+
+<body class="antialiased">
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+    
+    <!-- Transparent Top Navigation inside phone-frame -->
+    <header class="absolute top-0 z-50 px-4 py-6 flex items-center justify-between w-full" data-purpose="top-navigation">
+      <a href="marketplace.html" aria-label="Go back" class="p-2 rounded-full hover:bg-surface-dim transition-colors bg-white/80 backdrop-blur-sm shadow-sm">
+        <span class="material-icons-outlined text-text">arrow_back</span>
+      </a>
+      <div class="flex gap-2">
+        <button aria-label="Save listing" class="p-2 rounded-full hover:bg-surface-dim transition-colors bg-white/80 backdrop-blur-sm shadow-sm">
+          <span class="material-icons-outlined text-text">bookmark_border</span>
+        </button>
+        <button aria-label="Share listing" class="p-2 rounded-full hover:bg-surface-dim transition-colors bg-white/80 backdrop-blur-sm shadow-sm">
+          <span class="material-icons-outlined text-text">share</span>
+        </button>
+        <button aria-label="More options" class="p-2 rounded-full hover:bg-surface-dim transition-colors bg-white/80 backdrop-blur-sm shadow-sm">
+          <span class="material-icons-outlined text-text">more_horiz</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="app-content bg-surface">
+      <!-- Main Content Area -->
+      <main class="pb-32" data-purpose="product-details">
+        
+        <!-- Hero Image -->
+        <div class="w-full aspect-[4/3] overflow-hidden relative" data-purpose="product-hero">
+          <img alt="Fresh organic carrots in a crate" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ugAcG9h-OPvfIO1dsgEdn2sW1FZ3Oa283G02JS5a5tOa035rNccYdJTk4rNlPX-i1LG0yaF9U1_FupQW_O3-_Gk5vm-KcUBmXp2ik2XteQOLR2DRwCZXDSsLAAtq0vbjU9_IrogY7I_JDUMR96gSC18GyLpESKD3vw2P3othBF4D3JUDSwba5HK4DdbTCcTtQQGOs9IvMvITdMOaG1Jo0ih8cGIa_YKgr30MMTWtnqW9acNjMRPxQvRS_gT">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent pointer-events-none"></div>
+        </div>
+
+        <!-- Header Info Section -->
+        <section class="bg-surface-bright p-5 mb-2" data-purpose="product-header">
+          <h1 class="text-2xl font-bold text-text mb-1">Premium Organic Carrots</h1>
+          <p class="text-xl font-bold text-[#416900] mb-2">Rp 12.000 <span class="text-sm font-normal text-text-muted">/ kg</span></p>
+          <div class="flex items-center text-sm text-text-muted mb-4">
+            <span class="material-icons-outlined text-[16px] mr-1">schedule</span>
+            <span>Listed 2 hours ago in Lembang, Jawa Barat</span>
+          </div>
+          <div class="flex gap-3 mb-2">
+            <button onclick="window.location.href='chat.html'" class="flex-1 bg-[#416900] text-white py-3 px-4 rounded-full font-semibold flex items-center justify-center gap-2 hover:bg-[#315200] transition-colors shadow-sm">
+              <span class="material-icons-outlined text-[20px]">chat</span>
+              Message
+            </button>
+          </div>
+        </section>
+
+        <!-- Details Section -->
+        <section class="bg-surface-bright p-5 mb-2" data-purpose="product-specifications">
+          <h2 class="text-lg font-bold text-text mb-4">Details</h2>
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between items-start border-b border-surface-dim pb-3">
+              <span class="text-text-muted font-medium w-1/3">Condition</span>
+              <span class="text-text text-right font-medium">Fresh, Organic</span>
+            </div>
+            <div class="flex justify-between items-start border-b border-surface-dim pb-3">
+              <span class="text-text-muted font-medium w-1/3">Rating</span>
+              <div class="flex items-center justify-end text-text font-medium">
+                <span class="material-icons-outlined text-[16px] text-yellow-400 mr-1">star</span>
+                5.0 <span class="text-text-muted font-normal ml-1">(215 reviews)</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-sm text-text leading-relaxed">
+            <p class="mb-2">Fresh organic carrots straight from the farm in Lembang. Harvested every morning to maintain quality and freshness.</p>
+            <ul class="list-disc pl-5 mb-2 space-y-1">
+              <li>No chemical pesticides</li>
+              <li>Rich in Vitamin A</li>
+              <li>Perfect for juice and everyday cooking</li>
+            </ul>
+            <p>Accepting bulk orders (Pre-order). Please chat to negotiate harvest contract prices.</p>
+          </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="bg-surface-bright p-5 mb-2" data-purpose="location-map">
+          <div class="rounded-xl overflow-hidden relative border border-surface-dim bg-surface h-32 mb-3 flex items-center justify-center">
+            <!-- Placeholder for map image -->
+            <img alt="Map Location Lembang" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcBJHcwjrQEqCBT7F2ZMGxybQRjtsbS3aTk1fE2P6Kp1a4HTZKcG9QotHuKS7iP8JW1YABwfN283IoL9aJ4FNynRSk-sxlwicY-J1cAAfbbQTAJIw86Du-7_sh_jGzRYB8yhgrTs_cpZHkkGTsLIhSKBXNoxwsQNAoS056YekhxLk3TiN1eShBBgJfNWMZtSMcP5oCkW95Yi-00oY4-D2Lr4r2w2-kh0BqDkq7BMhN817O-u2igA5tOnfGBJLUDLaER46e6CjCdN3I">
+            <div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+            <div class="absolute bottom-2 right-2 bg-white/90 rounded-full p-1 shadow-sm backdrop-blur-sm">
+              <span class="material-icons-outlined text-[16px] text-text-muted">info</span>
+            </div>
+          </div>
+          <p class="text-sm font-medium text-text">Lembang, Jawa Barat</p>
+          <p class="text-xs text-text-muted mt-1">Location is approximate</p>
+        </section>
+
+        <!-- Seller Information Section -->
+        <section class="bg-surface-bright p-5" data-purpose="seller-profile">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-text">Seller information</h2>
+            <a class="text-[#416900] font-semibold text-sm hover:underline" href="#">Seller details</a>
+          </div>
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-14 h-14 rounded-full bg-surface-dim flex items-center justify-center overflow-hidden border-2 border-surface">
+              <!-- Placeholder for seller avatar -->
+              <span class="material-icons-outlined text-3xl text-text-light">person</span>
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-text flex items-center gap-1">
+                SariSayur
+                <span class="material-icons-outlined text-[16px] text-blue-500" title="Verified Farmer">verified</span>
+              </h3>
+              <div class="flex items-center gap-1 text-sm text-text-muted">
+                <span class="material-icons-outlined text-[14px] text-yellow-400">star</span>
+                <span>4.8/5 (1.2k orders)</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-text-muted">
+            <span class="material-icons-outlined text-[20px]">calendar_today</span>
+            <span>Joined Supply Hub in 2023</span>
+          </div>
+        </section>
+
+      </main>
+    </div><!-- /app-content -->
+
+    <!-- Bottom Interaction Bar -->
+    <footer class="absolute bottom-0 left-0 w-full bg-surface-bright border-t border-surface-dim p-4 z-50 flex flex-col gap-2 rounded-b-[48px]" data-purpose="bottom-actions">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="material-icons-outlined text-[16px] text-[#416900]">chat</span>
+        <span class="text-sm font-medium text-text">Send seller a message</span>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex-grow relative">
+          <input class="w-full bg-surface border border-surface-dim text-text rounded-full py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#84cc16] focus:border-transparent transition-shadow text-sm" placeholder="Hi, is this available?" type="text">
+        </div>
+        <button onclick="window.location.href='chat.html'" class="bg-[#416900] text-white rounded-full px-6 py-3 font-semibold hover:bg-[#315200] transition-colors shadow-sm whitespace-nowrap">
+          Send
+        </button>
+      </div>
+    </footer>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Profil Pengguna - Supply Hub</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#e1e3de",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-high": "#e7e9e4",
+                    "on-tertiary-container": "#743900",
+                    "surface-tint": "#416900",
+                    "tertiary-container": "#ffa35d",
+                    "on-primary-container": "#315200",
+                    "secondary": "#735c00",
+                    "primary": "#416900",
+                    "on-secondary-fixed": "#231b00",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error-container": "#93000a",
+                    "background": "#f8faf5",
+                    "tertiary": "#944a00",
+                    "primary-fixed-dim": "#91db2a",
+                    "secondary-fixed": "#ffe083",
+                    "surface-dim": "#d8dbd6",
+                    "outline-variant": "#c1cab0",
+                    "on-surface": "#191c1a",
+                    "on-secondary-container": "#6f5900",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "primary-container": "#84cc16",
+                    "on-surface-variant": "#424936",
+                    "secondary-container": "#fed01b",
+                    "surface-container-highest": "#e1e3de",
+                    "primary-fixed": "#acf847",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#ecefea",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#eec200",
+                    "on-primary-fixed": "#102000",
+                    "inverse-on-surface": "#eff1ec",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8faf5",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4ef",
+                    "surface": "#f8faf5",
+                    "outline": "#727a64",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e312e",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#304f00",
+                    "on-background": "#191c1a",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#91db2a",
+                    "on-tertiary-fixed-variant": "#713700"
+                },
+                "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "xl": "64px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "md": "24px",
+                    "margin-desktop": "80px",
+                    "margin-mobile": "20px"
+                },
+                "fontFamily": {
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"]
+                },
+                "fontSize": {
+                    "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                    "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "700" }],
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                    "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                    "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    /* STATUS BAR */
+    .status-bar {
+      background: transparent;
+      padding: 12px 24px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 50;
+    }
+    .status-bar__time { color: #1a1c1b; font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .status-bar__icons { display: flex; align-items: center; gap: 6px; }
+
+    /* SCROLLABLE CONTENT */
+    .app-content {
+      flex: 1;
+      overflow-y: auto;
+      scrollbar-width: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .app-content::-webkit-scrollbar { display: none; }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      background: #FAFAF4;
+      border-top: 1px solid #C2C9BB;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80px;
+      padding-bottom: 8px; /* safe area */
+      flex-shrink: 0;
+      z-index: 50;
+    }
+    .bottom-nav__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .bottom-nav__icon { width: 24px; height: 24px; }
+    .bottom-nav__label { font-size: 12px; font-weight: 600; color: #424936; }
+    
+    .bottom-nav__item.active .bottom-nav__icon * { stroke: #6f5900; }
+    .bottom-nav__item.active .bottom-nav__icon circle { stroke: #6f5900; }
+    .bottom-nav__item.active .bottom-nav__label { color: #6f5900; }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+    
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-bar__time">9:41</span>
+      <div class="status-bar__icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+          <rect x="0"   y="7"  width="3" height="5" rx="1" fill="#1a1c1b"/>
+          <rect x="4.5" y="5"  width="3" height="7" rx="1" fill="#1a1c1b"/>
+          <rect x="9"   y="2"  width="3" height="10" rx="1" fill="#1a1c1b"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1" fill="rgba(26,28,27,0.38)"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+          <path d="M2.05 6.53A13.5 13.5 0 0 1 22 6.53" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M5.5 10.4A8.5 8.5 0 0 1 18.5 10.4" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <path d="M9.2 14.1A4 4 0 0 1 14.8 14.1" stroke="#1a1c1b" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="1.5" fill="#1a1c1b"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="rgba(26,28,27,0.35)"/>
+          <rect x="1.5" y="1.5" width="16" height="9" rx="2.5" fill="#1a1c1b"/>
+          <path d="M23 4v4a2 2 0 0 0 0-4z" fill="rgba(26,28,27,0.4)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Scrollable content -->
+    <div class="app-content relative pb-32">
+      
+      <main class="w-full flex flex-col mt-lg px-margin-mobile">
+        <section class="flex flex-col items-center w-full mb-xl mt-6">
+          <div class="relative w-32 h-32 rounded-full border-4 border-surface-container-lowest shadow-[0px_10px_30px_rgba(132,204,22,0.15)] mb-md">
+            <img alt="Profil Budi Santoso" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8PXIDM4h0HUD5XXzgKVxWOk1qcKjAEiic7Vaq7yUz80ptxxrS2rshDUKZo_iuZI_Sf6i8qr_9RWDkQKMlyjEnAQgAkVKjbIbHdOtJxKQB_0LyYOoR3FvejL_RZeVShC9GJGvJZUCE6HmfN7CPNNS0wxaYR6U7wNZVukPAW5xHnCfmCmABpJXnBN4nDeobnSl6zzIL3UY1bac_n0TneXNPrIlGUFk1UXHBDh4OOflHjr4pFlRGEcS1mW5UxJK7Eib-y4AljweFgcpO">
+          </div>
+          <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-sm text-center">Budi Santoso</h2>
+          <div class="flex items-center gap-md">
+            <div class="flex items-center gap-1 bg-surface-container-low px-3 py-1.5 rounded-full">
+              <span class="material-symbols-outlined text-secondary-fixed-dim text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-lg text-label-lg text-on-surface-variant mt-0.5">4.8 Rating</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="w-full flex flex-col gap-sm">
+          <div onclick="window.location.href='transactions.html'" class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-4 flex items-center justify-between cursor-pointer hover:-translate-y-1 hover:shadow-[0px_10px_30px_rgba(132,204,22,0.15)] transition-all duration-300">
+            <div class="flex items-center gap-md">
+              <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">shopping_bag</span>
+              </div>
+              <span class="font-label-lg text-label-lg text-on-background">Order History</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_right</span>
+          </div>
+
+          <div onclick="window.location.href='transactions.html'" class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-4 flex items-center justify-between cursor-pointer hover:-translate-y-1 hover:shadow-[0px_10px_30px_rgba(132,204,22,0.15)] transition-all duration-300">
+            <div class="flex items-center gap-md">
+              <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">sell</span>
+              </div>
+              <span class="font-label-lg text-label-lg text-on-background">Sales History</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_right</span>
+          </div>
+
+          <div onclick="window.location.href='messages.html'" class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-4 flex items-center justify-between cursor-pointer hover:-translate-y-1 hover:shadow-[0px_10px_30px_rgba(132,204,22,0.15)] transition-all duration-300">
+            <div class="flex items-center gap-md">
+              <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">forum</span>
+              </div>
+              <span class="font-label-lg text-label-lg text-on-background">Chat History</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_right</span>
+          </div>
+
+          <div class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-4 flex items-center justify-between cursor-pointer hover:-translate-y-1 hover:shadow-[0px_10px_30px_rgba(132,204,22,0.15)] transition-all duration-300 mt-base">
+            <div class="flex items-center gap-md">
+              <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">manage_accounts</span>
+              </div>
+              <span class="font-label-lg text-label-lg text-on-background">Account Settings</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_right</span>
+          </div>
+
+          <div class="bg-surface-container-lowest border border-surface-variant rounded-DEFAULT p-4 flex items-center justify-between cursor-pointer hover:-translate-y-1 hover:shadow-[0px_10px_30px_rgba(132,204,22,0.15)] transition-all duration-300">
+            <div class="flex items-center gap-md">
+              <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">support_agent</span>
+              </div>
+              <span class="font-label-lg text-label-lg text-on-background">Help & Support</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_right</span>
+          </div>
+        </section>
+      </main>
+
+    </div><!-- /app-content -->
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+      <!-- Home -->
+      <a href="index.html" class="bottom-nav__item">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="#424936"/>
+          <polyline points="9 22 9 12 15 12 15 22" stroke="#424936"/>
+        </svg>
+        <span class="bottom-nav__label">Home</span>
+      </a>
+
+      <!-- Market -->
+      <a href="marketplace.html" class="bottom-nav__item">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l1-5h16l1 5" stroke="#424936"/>
+          <path d="M3 9a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z" stroke="#424936"/>
+          <rect x="9" y="14" width="6" height="5" rx="1" stroke="#424936"/>
+        </svg>
+        <span class="bottom-nav__label">Market</span>
+      </a>
+
+      <!-- Forum -->
+      <a href="forum.html" class="bottom-nav__item">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="#424936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span class="bottom-nav__label">Forum</span>
+      </a>
+      
+      <!-- Profile (active) -->
+      <a href="profile.html" class="bottom-nav__item active">
+        <svg class="bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#424936"/>
+          <circle cx="12" cy="7" r="4" stroke="#424936"/>
+        </svg>
+        <span class="bottom-nav__label">Profile</span>
+      </a>
+    </nav>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

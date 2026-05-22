@@ -1,0 +1,362 @@
+/* ===================================================
+   Commodities Price Page Styles
+   Extends design-system.css
+   =================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ---- Wrapper & Frame ---- */
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+  padding: 40px 16px;
+}
+
+.phone-frame {
+  width: 412px;
+  height: 917px;
+  background: linear-gradient(90deg, #f8faf5 0%, #f8faf5 100%), linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
+  border-radius: 48px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 10px rgba(0,0,0,0.4),
+    0 40px 80px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  position: relative;
+}
+
+/* ---- Status Bar ---- */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 8px; /* Added extra top padding for rounded corners */
+  flex-shrink: 0;
+  background: transparent;
+  z-index: 20;
+  position: relative;
+}
+
+.status-bar__time {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 15px;
+  color: #1a1c1b;
+}
+
+.status-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---- Top App Bar ---- */
+.cp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 16px;
+  background: #fafaf4;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.27);
+  z-index: 10;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.cp-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cp-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #154212;
+}
+
+.cp-header-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: #154212;
+  letter-spacing: -0.4px;
+}
+
+/* ---- Scrollable Content ---- */
+.cp-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 16px 96px;
+}
+.cp-content::-webkit-scrollbar { display: none; }
+
+/* ---- Search Bar ---- */
+.cp-search {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 0.5px solid #aaa;
+  border-radius: 32px;
+  height: 40px;
+  padding: 0 16px;
+  position: relative;
+  box-shadow: 0px 0px 12px rgba(51,51,51,0.1);
+  flex-shrink: 0;
+}
+
+.cp-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: #416900;
+  outline: none;
+  padding-left: 12px;
+  padding-right: 32px;
+}
+.cp-search input::placeholder {
+  color: #416900;
+}
+
+.cp-search-icon {
+  color: #416900;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.cp-filter-icon {
+  position: absolute;
+  right: 16px;
+  color: #416900;
+  cursor: pointer;
+}
+
+/* ---- Market Insight Card ---- */
+.market-insight {
+  background: #154212;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+  min-height: 192px;
+  flex-shrink: 0;
+}
+
+.market-insight-bg {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(194,201,187,0.4);
+  box-shadow: 0 0 20px 10px rgba(194,201,187,0.2);
+}
+
+.insight-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.insight-desc {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 16px;
+  color: #7eaf73;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.insight-stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.insight-stat {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 48px;
+  color: white;
+  letter-spacing: -0.96px;
+  line-height: 1;
+}
+
+.insight-stat-label {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: white;
+  opacity: 0.8;
+}
+
+.insight-update {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: #fbfbfb;
+  margin-top: auto;
+}
+
+/* ---- Category Tabs ---- */
+.cp-tabs {
+  display: flex;
+  border-bottom: 1px solid #c2c9bb;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+.cp-tabs::-webkit-scrollbar { display: none; }
+
+.cp-tab {
+  padding: 12px 16px 14px;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 12px;
+  color: #42493e;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.cp-tab.active {
+  color: #154212;
+}
+
+.cp-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #154212;
+}
+
+/* ---- Commodity List ---- */
+.cp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cp-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border: 0.7px solid rgba(165,165,165,0.49);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.cp-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cp-card-img-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #eeeee9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cp-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cp-card-title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 16px;
+  color: #1a1c19;
+}
+
+.cp-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cp-card-price {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: #002b02;
+  margin-bottom: 4px;
+}
+
+.cp-card-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.cp-card-change.up {
+  color: #ba1a1a;
+}
+.cp-card-change.down {
+  color: #7eaf73;
+}
+
+.cp-card-change svg {
+  width: 12px;
+  height: 7px;
+}
+
+.cp-see-more {
+  display: block;
+  text-align: right;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 12px;
+  color: #886800;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 4px;
+}
