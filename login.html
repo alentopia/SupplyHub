@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Sign In - Supply Hub</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#e1e3de",
+                    "primary-container": "#84cc16",
+                    "on-surface-variant": "#424936",
+                    "secondary-container": "#fed01b",
+                    "background": "#f8faf5",
+                    "primary-fixed-dim": "#91db2a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8faf5",
+                    "outline": "#727a64",
+                    "outline-variant": "#c1cab0",
+                    "primary": "#416900",
+                    "on-background": "#191c1a",
+                },
+                "fontFamily": {
+                    "sans": ["Plus Jakarta Sans", "sans-serif"]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    /* Input Focus Styles */
+    .input-field:focus-within {
+      border-color: #416900;
+      box-shadow: 0 0 0 1px #416900;
+    }
+    
+    .social-btn:hover {
+      background-color: #f3f4f6;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+
+<div class="app-wrapper">
+  <div class="phone-frame px-6 pt-16 pb-10 flex flex-col">
+    
+    <!-- Top Decoration -->
+    <div class="flex justify-end mb-10 pr-2">
+      <span class="material-symbols-outlined text-[32px] text-primary-container opacity-80" style="font-variation-settings: 'FILL' 1;">eco</span>
+    </div>
+
+    <!-- Header / Logo -->
+    <div class="mb-8">
+      <h1 class="text-[42px] font-extrabold tracking-tight">
+        <span class="text-[#1a1c1b]">Supply</span><span class="text-primary-container">Hub</span>
+      </h1>
+    </div>
+
+    <!-- Segmented Control (Tabs) -->
+    <div class="bg-surface-variant/30 p-1 rounded-2xl flex mb-10 border border-outline-variant/30">
+      <div class="flex-1 text-center py-3 bg-white rounded-xl shadow-sm text-primary font-bold text-[15px] cursor-pointer">
+        Sign In
+      </div>
+      <div class="flex-1 text-center py-3 text-on-surface-variant font-medium text-[15px] cursor-pointer hover:text-primary transition" onclick="window.location.href='register.html'">
+        Sign Up
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="flex flex-col gap-5 mb-8">
+      
+      <!-- Phone Number Input -->
+      <div>
+        <label class="block text-on-background font-semibold text-[14px] mb-2 ml-1">Phone Number</label>
+        <div class="input-field bg-white border border-outline-variant rounded-xl flex items-center px-4 py-3.5 transition-colors">
+          <input type="tel" placeholder="Your Phone Number" class="w-full bg-transparent border-none p-0 text-[15px] text-on-background placeholder-gray-400 focus:ring-0">
+        </div>
+      </div>
+      
+      <!-- Password Input -->
+      <div>
+        <label class="block text-on-background font-semibold text-[14px] mb-2 ml-1">Password</label>
+        <div class="input-field bg-white border border-outline-variant rounded-xl flex items-center px-4 py-3.5 transition-colors">
+          <input type="password" placeholder="Password" class="w-full bg-transparent border-none p-0 text-[15px] text-on-background placeholder-gray-400 focus:ring-0">
+          <span class="material-symbols-outlined text-gray-400 cursor-pointer hover:text-primary ml-2">visibility_off</span>
+        </div>
+        
+        <!-- Forgot Password Link -->
+        <div class="flex justify-end mt-3">
+          <a href="#" class="text-primary font-semibold text-[14px] hover:underline">Forgot password?</a>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Sign In Button -->
+    <button class="w-full bg-primary text-white font-bold text-[16px] py-4 rounded-xl shadow-[0_8px_20px_rgba(65,105,0,0.2)] hover:bg-primary/90 hover:-translate-y-0.5 transition-all mb-10" onclick="window.location.href='index.html'">
+      Sign In
+    </button>
+
+    <!-- Alternative Login -->
+    <div class="mt-auto">
+      <!-- Divider -->
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-px bg-outline-variant flex-1"></div>
+        <span class="text-on-surface-variant text-[14px] font-medium">or sign in with</span>
+        <div class="h-px bg-outline-variant flex-1"></div>
+      </div>
+
+      <!-- Social Buttons -->
+      <div class="flex gap-4">
+        <button class="social-btn flex-1 flex items-center justify-center gap-2 bg-white border border-outline-variant rounded-xl py-3.5 transition-colors">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5">
+          <span class="font-bold text-[14px] text-on-background">Google</span>
+        </button>
+        <button class="social-btn flex-1 flex items-center justify-center gap-2 bg-white border border-outline-variant rounded-xl py-3.5 transition-colors">
+          <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook" class="w-5 h-5">
+          <span class="font-bold text-[14px] text-on-background">Facebook</span>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Verification - Supply Hub</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#e1e3de",
+                    "primary-container": "#84cc16",
+                    "on-surface-variant": "#424936",
+                    "secondary-container": "#fed01b",
+                    "background": "#f8faf5",
+                    "primary-fixed-dim": "#91db2a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8faf5",
+                    "outline": "#727a64",
+                    "outline-variant": "#c1cab0",
+                    "primary": "#416900",
+                    "on-background": "#191c1a",
+                },
+                "fontFamily": {
+                    "sans": ["Plus Jakarta Sans", "sans-serif"]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    .code-input {
+      width: 70px;
+      height: 70px;
+      border: 1px solid #c1cab0;
+      border-radius: 20px;
+      font-size: 32px;
+      font-weight: 800;
+      text-align: center;
+      background: white;
+      color: #191c1a;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .code-input:focus {
+      outline: none;
+      border-color: #416900;
+      box-shadow: 0 0 0 2px rgba(65,105,0,0.2);
+    }
+    
+    .code-input.filled {
+      border-color: #416900;
+      background: #f4faeb;
+    }
+
+    /* Numpad styles */
+    .numpad-container {
+      background: white;
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+      padding: 24px 16px 40px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+      margin-top: auto;
+    }
+
+    .num-btn {
+      height: 56px;
+      font-size: 24px;
+      font-weight: 600;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #191c1a;
+      transition: background-color 0.1s;
+    }
+
+    .num-btn:active {
+      background-color: #f3f4f6;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+
+<div class="app-wrapper">
+  <div class="phone-frame flex flex-col">
+    
+    <div class="px-6 pt-16 flex-1 flex flex-col">
+      <!-- Top Bar -->
+      <div class="flex items-center mb-8">
+        <button onclick="window.history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+      </div>
+
+      <!-- Header -->
+      <div class="mb-10">
+        <h1 class="text-[32px] font-extrabold mb-3">Enter code</h1>
+        <p class="text-on-surface-variant text-[15px] leading-relaxed">
+          We’ve sent an SMS with an activation code to your phone <span class="font-bold text-on-background">+6282332423</span>
+        </p>
+      </div>
+
+      <!-- Code Inputs -->
+      <div class="flex justify-between gap-3 mb-12">
+        <input type="text" maxlength="1" class="code-input filled" value="8" readonly>
+        <input type="text" maxlength="1" class="code-input filled" value="2" readonly>
+        <input type="text" maxlength="1" class="code-input filled" value="2" readonly>
+        <input type="text" maxlength="1" class="code-input" placeholder=" " readonly>
+      </div>
+
+      <!-- Verify Button -->
+      <button class="w-full bg-primary text-white font-bold text-[16px] py-4 rounded-xl shadow-[0_8px_20px_rgba(65,105,0,0.2)] hover:bg-primary/90 hover:-translate-y-0.5 transition-all mb-6" onclick="window.location.href='complete-profile.html'">
+        Verify
+      </button>
+
+      <!-- Resend Link -->
+      <div class="text-center">
+        <span class="text-on-surface-variant text-[14px]">Didn't receive code?</span>
+        <button class="text-primary font-bold text-[14px] ml-1 hover:underline">Resend</button>
+      </div>
+    </div>
+
+    <!-- Custom Numpad -->
+    <div class="numpad-container">
+      <div class="grid grid-cols-3 gap-y-4 gap-x-6 px-4">
+        <button class="num-btn">1</button>
+        <button class="num-btn">2</button>
+        <button class="num-btn">3</button>
+        
+        <button class="num-btn">4</button>
+        <button class="num-btn">5</button>
+        <button class="num-btn">6</button>
+        
+        <button class="num-btn">7</button>
+        <button class="num-btn">8</button>
+        <button class="num-btn">9</button>
+        
+        <div class="num-btn"></div>
+        <button class="num-btn">0</button>
+        <button class="num-btn">
+          <span class="material-symbols-outlined text-[28px]">backspace</span>
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Complete Profile - Supply Hub</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#e1e3de",
+                    "primary-container": "#84cc16",
+                    "on-surface-variant": "#424936",
+                    "secondary-container": "#fed01b",
+                    "background": "#f8faf5",
+                    "primary-fixed-dim": "#91db2a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8faf5",
+                    "outline": "#727a64",
+                    "outline-variant": "#c1cab0",
+                    "primary": "#416900",
+                    "on-background": "#191c1a",
+                },
+                "fontFamily": {
+                    "sans": ["Plus Jakarta Sans", "sans-serif"]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    /* Role selection cards */
+    .role-card {
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .role-card.selected {
+      border-color: #416900;
+      background-color: #f4faeb;
+    }
+    .role-card.selected .role-icon-container {
+      background-color: #84cc16;
+      color: white;
+    }
+    
+    /* Profile upload */
+    .profile-upload-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #e1e3de;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .profile-upload-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+    
+    .profile-upload-container:hover .profile-upload-overlay {
+      opacity: 1;
+    }
+
+    .edit-badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      background: #416900;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #f8faf5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+
+    .input-field:focus-within {
+      border-color: #416900;
+      box-shadow: 0 0 0 1px #416900;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+
+<div class="app-wrapper">
+  <div class="phone-frame flex flex-col">
+    
+    <!-- Top Bar -->
+    <div class="px-6 pt-16 pb-4 flex items-center justify-between sticky top-0 bg-background/90 backdrop-blur-sm z-10">
+      <button onclick="window.history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+      <h1 class="text-[20px] font-bold">Complete Profile</h1>
+      <div class="w-10"></div> <!-- spacer -->
+    </div>
+
+    <div class="px-6 flex-1 overflow-y-auto pb-6">
+      
+      <!-- Profile Picture -->
+      <div class="mt-4 mb-10">
+        <div class="profile-upload-container">
+          <span class="material-symbols-outlined text-[48px] text-outline">person</span>
+          <div class="profile-upload-overlay">
+            <span class="material-symbols-outlined">photo_camera</span>
+          </div>
+          <div class="edit-badge">
+            <span class="material-symbols-outlined text-[18px]">edit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Join As Section -->
+      <div class="mb-10">
+        <h2 class="text-[13px] font-bold text-outline uppercase tracking-wider mb-4 ml-1">Join As</h2>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Buyer -->
+          <div class="role-card selected bg-white border-outline-variant/50 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 cursor-pointer shadow-sm hover:shadow-md" onclick="selectRole(this)">
+            <div class="role-icon-container w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+            </div>
+            <span class="font-bold text-[15px]">Buyer</span>
+          </div>
+          
+          <!-- Supplier -->
+          <div class="role-card bg-white border-outline-variant/50 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 cursor-pointer shadow-sm hover:shadow-md" onclick="selectRole(this)">
+            <div class="role-icon-container w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+            </div>
+            <span class="font-bold text-[15px]">Supplier</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Inputs -->
+      <div class="flex flex-col gap-5 mb-8">
+        
+        <!-- Full Name -->
+        <div>
+          <label class="block text-on-background font-semibold text-[14px] mb-2 ml-1">Full Name</label>
+          <div class="input-field bg-white border border-outline-variant rounded-xl flex items-center px-4 py-3.5 transition-colors">
+            <input type="text" placeholder="Enter your full name" class="w-full bg-transparent border-none p-0 text-[15px] text-on-background placeholder-gray-400 focus:ring-0">
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-on-background font-semibold text-[14px] mb-2 ml-1">Email (optional)</label>
+          <div class="input-field bg-white border border-outline-variant rounded-xl flex items-center px-4 py-3.5 transition-colors">
+            <input type="email" placeholder="Enter your email address" class="w-full bg-transparent border-none p-0 text-[15px] text-on-background placeholder-gray-400 focus:ring-0">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Bottom Fixed Button -->
+    <div class="p-6 bg-background pt-2 pb-10">
+      <button class="w-full bg-primary text-white font-bold text-[16px] py-4 rounded-xl shadow-[0_8px_20px_rgba(65,105,0,0.2)] hover:bg-primary/90 hover:-translate-y-0.5 transition-all" onclick="window.location.href='categories.html'">
+        Continue
+      </button>
+    </div>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+<script>
+  function selectRole(element) {
+    // Remove selected class from all
+    document.querySelectorAll('.role-card').forEach(card => {
+      card.classList.remove('selected');
+      card.classList.remove('border-primary');
+    });
+    
+    // Add to clicked
+    element.classList.add('selected');
+  }
+</script>
+</body>
+</html>

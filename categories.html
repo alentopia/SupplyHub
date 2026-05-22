@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Select Categories - Supply Hub</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#e1e3de",
+                    "primary-container": "#84cc16",
+                    "on-surface-variant": "#424936",
+                    "secondary-container": "#fed01b",
+                    "background": "#f8faf5",
+                    "primary-fixed-dim": "#91db2a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8faf5",
+                    "outline": "#727a64",
+                    "outline-variant": "#c1cab0",
+                    "primary": "#416900",
+                    "on-background": "#191c1a",
+                },
+                "fontFamily": {
+                    "sans": ["Plus Jakarta Sans", "sans-serif"]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    /* Category Chips */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 100px;
+      background-color: white;
+      border: 1px solid #c1cab0;
+      font-weight: 600;
+      font-size: 14px;
+      color: #191c1a;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .chip:hover {
+      background-color: #f4faeb;
+    }
+
+    .chip.active {
+      background-color: #84cc16;
+      border-color: #84cc16;
+      color: white;
+      box-shadow: 0 4px 12px rgba(132, 204, 22, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+
+<div class="app-wrapper">
+  <div class="phone-frame flex flex-col">
+    
+    <!-- Top Bar -->
+    <div class="px-6 pt-16 pb-4 flex items-center justify-between sticky top-0 bg-background/90 backdrop-blur-sm z-10">
+      <button onclick="window.history.back()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+      <div class="w-10"></div> <!-- spacer -->
+    </div>
+
+    <div class="px-6 flex-1 overflow-y-auto pb-6">
+      
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-[32px] font-extrabold mb-3 leading-tight">What are you interested in?</h1>
+        <p class="text-on-surface-variant text-[15px] leading-relaxed">
+          Select categories to get personalized supply recommendations.
+        </p>
+      </div>
+
+      <!-- Categories Container -->
+      <div class="flex flex-wrap gap-3">
+        <div class="chip" onclick="toggleChip(this)">🍎 Fresh Produce</div>
+        <div class="chip" onclick="toggleChip(this)">🥩 Meat & Poultry</div>
+        <div class="chip" onclick="toggleChip(this)">🐟 Seafood</div>
+        <div class="chip" onclick="toggleChip(this)">🥛 Dairy & Eggs</div>
+        <div class="chip" onclick="toggleChip(this)">🥖 Bakery</div>
+        <div class="chip" onclick="toggleChip(this)">🌾 Grains & Pasta</div>
+        <div class="chip" onclick="toggleChip(this)">🥫 Canned Goods</div>
+        <div class="chip" onclick="toggleChip(this)">🧃 Beverages</div>
+        <div class="chip" onclick="toggleChip(this)">🥨 Snacks</div>
+        <div class="chip" onclick="toggleChip(this)">🌿 Spices & Herbs</div>
+        <div class="chip" onclick="toggleChip(this)">📦 Packaging</div>
+        <div class="chip" onclick="toggleChip(this)">🧹 Cleaning Supplies</div>
+        <div class="chip" onclick="toggleChip(this)">✨ Other</div>
+      </div>
+      
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="p-6 bg-background pt-4 pb-10 flex gap-4 border-t border-outline-variant/30">
+      <button class="flex-1 bg-surface-variant text-on-surface-variant font-bold text-[16px] py-4 rounded-xl hover:bg-surface-variant/80 transition-all" onclick="window.location.href='index.html'">
+        Skip
+      </button>
+      <button class="flex-[2] bg-primary text-white font-bold text-[16px] py-4 rounded-xl shadow-[0_8px_20px_rgba(65,105,0,0.2)] hover:bg-primary/90 hover:-translate-y-0.5 transition-all" onclick="window.location.href='index.html'">
+        Next
+      </button>
+    </div>
+
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+<script>
+  function toggleChip(element) {
+    element.classList.toggle('active');
+  }
+</script>
+</body>
+</html>

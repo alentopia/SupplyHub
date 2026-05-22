@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Onboarding - Supply Hub</title>
+  
+  <link rel="stylesheet" href="design-system.css" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#e1e3de",
+                    "surface-container-highest": "#e1e3de",
+                    "primary-container": "#84cc16",
+                    "on-surface-variant": "#424936",
+                    "secondary-container": "#fed01b",
+                    "background": "#f8faf5",
+                    "primary-fixed-dim": "#91db2a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8faf5",
+                    "outline": "#727a64",
+                    "primary": "#416900",
+                    "on-background": "#191c1a",
+                },
+                "fontFamily": {
+                    "sans": ["Plus Jakarta Sans", "sans-serif"]
+                }
+            }
+        }
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #f8faf5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2e00 0%, #2f4a00 40%, #1a2e00 100%);
+      padding: 40px 16px;
+    }
+
+    .phone-frame {
+      width: 412px;
+      height: 917px;
+      background: #f8faf5;
+      border-radius: 48px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 10px rgba(0,0,0,0.4),
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .app-wrapper { padding: 0; }
+      .phone-frame {
+        width: 100%;
+        height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    .slide-fade-enter {
+      animation: slideFadeIn 0.4s ease-out forwards;
+    }
+
+    @keyframes slideFadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .img-fade-enter {
+      animation: imgFadeIn 0.5s ease-out forwards;
+    }
+    
+    @keyframes imgFadeIn {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background">
+
+<div class="app-wrapper">
+  <div class="phone-frame">
+    
+    <!-- Image Section -->
+    <div class="w-full h-[55%] relative bg-gray-200 overflow-hidden">
+      <img id="onboarding-image" src="onboarding1.png" alt="Onboarding Image" class="w-full h-full object-cover img-fade-enter">
+      <!-- Gradient Overlay to blend with bottom sheet -->
+      <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+    </div>
+    
+    <!-- Bottom Sheet Content Section -->
+    <div class="w-full h-[45%] bg-background flex flex-col justify-between px-6 pt-6 pb-10 z-10 -mt-6 rounded-t-[32px] relative shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+      
+      <div id="content-container" class="slide-fade-enter">
+        <!-- Dot Indicators -->
+        <div class="flex gap-2 mb-8" id="dots-container">
+          <div class="h-2 w-8 bg-primary rounded-full transition-all duration-300" id="dot-0"></div>
+          <div class="h-2 w-2 bg-primary/30 rounded-full transition-all duration-300" id="dot-1"></div>
+          <div class="h-2 w-2 bg-primary/30 rounded-full transition-all duration-300" id="dot-2"></div>
+        </div>
+        
+        <!-- Text Content -->
+        <h1 id="onboarding-title" class="text-[32px] leading-tight font-extrabold text-[#1a1c1b] mb-4 tracking-tight">
+          Freshness Straight from the Field
+        </h1>
+        <p id="onboarding-desc" class="text-[16px] leading-relaxed text-on-surface-variant font-medium">
+          Order crops while they are still growing and receive them immediately once harvest time arrives.
+        </p>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="flex items-center justify-between mt-auto pt-4" id="footer-buttons">
+        <button id="skip-btn" class="text-on-surface-variant font-bold text-[16px] px-2 py-2 hover:text-primary transition" onclick="finishOnboarding()">
+          Skip
+        </button>
+        <button id="next-btn" class="bg-primary text-white font-bold text-[16px] px-8 py-4 rounded-full shadow-[0_8px_16px_rgba(65,105,0,0.25)] hover:bg-primary/90 hover:-translate-y-0.5 transition-all" onclick="nextStep()">
+          Next
+        </button>
+      </div>
+
+    </div>
+    
+  </div><!-- /phone-frame -->
+</div><!-- /app-wrapper -->
+
+<script>
+  const steps = [
+    {
+      title: "Freshness Straight from the Field",
+      desc: "Order crops while they are still growing and receive them immediately once harvest time arrives.",
+      img: "onboarding1.png"
+    },
+    {
+      title: "Monitor Growth in Real-time",
+      desc: "View the farmers' planting logs and know exactly how your food is grown.",
+      img: "onboarding2.png"
+    },
+    {
+      title: "Enjoy Freshness at Your Table",
+      desc: "Complete your first step and start bringing the finest ingredients straight from the farmer to your home.",
+      img: "onboarding3.png"
+    }
+  ];
+
+  let currentStep = 0;
+
+  function updateUI() {
+    const titleEl = document.getElementById('onboarding-title');
+    const descEl = document.getElementById('onboarding-desc');
+    const imgEl = document.getElementById('onboarding-image');
+    const container = document.getElementById('content-container');
+    const skipBtn = document.getElementById('skip-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Trigger animations
+    container.classList.remove('slide-fade-enter');
+    imgEl.classList.remove('img-fade-enter');
+    void container.offsetWidth; // trigger reflow
+    void imgEl.offsetWidth;
+    container.classList.add('slide-fade-enter');
+    imgEl.classList.add('img-fade-enter');
+
+    // Update content
+    titleEl.textContent = steps[currentStep].title;
+    descEl.textContent = steps[currentStep].desc;
+    imgEl.src = steps[currentStep].img;
+
+    // Update dots
+    for (let i = 0; i < 3; i++) {
+      const dot = document.getElementById(`dot-${i}`);
+      if (i === currentStep) {
+        dot.className = "h-2 w-8 bg-primary rounded-full transition-all duration-300";
+      } else {
+        dot.className = "h-2 w-2 bg-primary/30 rounded-full transition-all duration-300";
+      }
+    }
+
+    // Update buttons
+    if (currentStep === 2) {
+      skipBtn.style.visibility = 'hidden';
+      nextBtn.textContent = "Get Started";
+      nextBtn.classList.add('w-full');
+      nextBtn.classList.remove('px-8');
+      document.getElementById('footer-buttons').classList.remove('justify-between');
+      document.getElementById('footer-buttons').classList.add('justify-center');
+    } else {
+      skipBtn.style.visibility = 'visible';
+      nextBtn.textContent = "Next";
+      nextBtn.classList.remove('w-full');
+      nextBtn.classList.add('px-8');
+      document.getElementById('footer-buttons').classList.add('justify-between');
+      document.getElementById('footer-buttons').classList.remove('justify-center');
+    }
+  }
+
+  function nextStep() {
+    if (currentStep < 2) {
+      currentStep++;
+      updateUI();
+    } else {
+      finishOnboarding();
+    }
+  }
+
+  function finishOnboarding() {
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>
